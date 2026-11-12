@@ -18,14 +18,21 @@
   var WA = '97431313064';
   var IG = 'https://www.instagram.com/datum.qa/';
   var MAP = 'https://maps.app.goo.gl/qoNauScXGs4P1Act8';
-  var IDS = ['wifi', 'network', 'cctv', 'door', 'phone', 'home', 'nas', 'car'];
+  var IDS = ['wifi', 'network', 'fw', 'cctv', 'door', 'phone', 'home', 'nas', 'car'];
 
-  /* Add real photos here: {img:'assets/projects/name.jpg', sys:0..7, en:'Title', ar:'العنوان'} */
-  var PROJECTS = [];
+  var PHOTOS = {
+    wifi: { src: 'assets/img/wifi.jpg', fit: 'contain', bg: '#ffffff' },
+    network: { src: 'assets/img/network.jpg', fit: 'cover', bg: '#1b1f27' },
+    cctv: { src: 'assets/img/cctv.jpg', fit: 'cover', bg: '#15161b' },
+    door: { src: 'assets/img/door.jpg', fit: 'contain', bg: '#ffffff' },
+    home: { src: 'assets/img/home.jpg', fit: 'cover', bg: '#061123' },
+    nas: { src: 'assets/img/nas.jpg', fit: 'contain', bg: '#ffffff' }
+  };
   /* Add real, approved customer quotes here: {en:{q:'..',n:'Name',r:'Company'}, ar:{q:'..',n:'..',r:'..'}} */
   var TESTIMONIALS = [];
 
   var ICONS = {
+    fw: 'M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z M9 12l2 2 4-4',
     wifi: 'M2 9a15 15 0 0 1 20 0 M5.5 12.5a10 10 0 0 1 13 0 M9 16a5 5 0 0 1 6 0 M12 19.5h.01',
     network: 'M9 3h6v5H9z M3 16h6v5H3z M15 16h6v5h-6z M12 8v4 M6 16v-4h12v4',
     cctv: 'M3 7l12-3 2 7-12 3z M17 8l4-1v5l-3 .8 M9 15v4 M6 19h6',
@@ -40,23 +47,24 @@
   var T = {
     en: {
       dir: 'ltr', other: 'العربية',
-      short: ['Wi-Fi', 'Network', 'CCTV', 'Door', 'IP phone', 'Smart home', 'NAS', 'Tracking'],
+      short: ['Wi-Fi', 'Network', 'Firewall', 'CCTV', 'Door', 'IP phone', 'Smart home', 'Storage', 'Tracking'],
       navSystems: 'Systems', navServices: 'Services', navWork: 'Work', navBrands: 'Brands', navContact: 'Contact', navQuote: 'Get a quote',
       eyebrow: 'IT, networking and smart homes in Qatar',
       h1a: 'Networks that work,', h1b: 'in homes and businesses.',
       lead: 'From Wi-Fi and cabling to CCTV and home automation, we design, supply, install and support the systems your connection depends on.',
       btnSystems: 'See our systems', btnWa: 'WhatsApp us',
-      f1: ['8', 'Systems we install'], f2: ['4', 'Brands we supply'], f3: ['1', 'Team, design to support'], f4: ['Doha', 'Serving Qatar'],
-      sysH: 'Systems we install', sysP: 'Eight systems, one team. Add the ones you need to your quote request.',
+      f1: ['9', 'Systems we install'], f2: ['5', 'Brands we supply'], f3: ['1', 'Team, design to support'], f4: ['Doha', 'Serving Qatar'],
+      sysH: 'Systems we install', sysP: 'Nine systems, one team. Add the ones you need to your quote request.',
       add: 'Add to quote', added: 'Added · Remove', details: 'View details',
       sys: [
         ['Wi-Fi', 'Access points placed for coverage, indoors and outdoors.', 'UniFi'],
         ['Network', 'Switching and cabling, designed and tested end to end.', 'UniFi'],
+        ['Firewall', 'Network security and routing for homes and businesses.', 'Netgate and UniFi'],
         ['CCTV', 'Camera systems for homes and businesses.', 'UniFi and Hikvision'],
         ['Door station', 'See and speak to visitors at the door.', 'Hikvision and Grandstream'],
         ['IP telephone', 'Office phone systems that run over your network.', 'Grandstream'],
         ['Home automation', 'Lighting, comfort and control working as one system.', ''],
-        ['Network-attached storage', 'Shared storage and backups on your own network.', 'Synology'],
+        ['Storage', 'NAS stations, hard drives and backups on your own network.', 'Synology'],
         ['Car tracking', 'Know where your vehicles are.', '']
       ],
       servEy: 'How we work', servH: 'From the first drawing to the annual service.',
@@ -67,14 +75,15 @@
         ['Supply and installation', 'Supply and installation of the latest equipment and components.'],
         ['Support', 'After-sale support and an annual maintenance contract.']
       ],
-      workEy: 'Our work', workH: 'Installations we deliver', workP: 'A look at the kind of systems we put in. Project photos are being added.', soon: 'Photos coming soon',
+      workEy: 'Our work', workH: 'Installations we deliver', workP: 'A look at the kind of systems and equipment we put in.',
       supplyEy: 'Supply', supplyH: 'What we supply and install',
       supply: [
         ['Access points and switches', 'UniFi', 'Wi-Fi and network switching'],
+        ['Firewalls', 'Netgate and UniFi', 'Network security and routing'],
         ['Camera systems', 'UniFi and Hikvision', 'CCTV for homes and businesses'],
         ['Door stations', 'Hikvision and Grandstream', 'Video door entry'],
         ['IP telephone', 'Grandstream', 'Office phone systems'],
-        ['Network storage', 'Synology', 'NAS stations and hard drives']
+        ['Storage', 'Synology', 'NAS stations and hard drives']
       ],
       brandsLabel: 'Brands we supply',
       tmEy: 'Clients', tmH: 'What our clients say',
@@ -99,23 +108,24 @@
     },
     ar: {
       dir: 'rtl', other: 'English',
-      short: ['الواي فاي', 'الشبكات', 'الكاميرات', 'الباب', 'هاتف IP', 'المنزل الذكي', 'NAS', 'التتبع'],
+      short: ['الواي فاي', 'الشبكات', 'الجدار الناري', 'الكاميرات', 'الباب', 'هاتف IP', 'المنزل الذكي', 'التخزين', 'التتبع'],
       navSystems: 'الأنظمة', navServices: 'الخدمات', navWork: 'أعمالنا', navBrands: 'العلامات التجارية', navContact: 'تواصل معنا', navQuote: 'اطلب عرض سعر',
       eyebrow: 'تقنية المعلومات والشبكات والمنازل الذكية في قطر',
       h1a: 'شبكات تعمل بكفاءة،', h1b: 'في المنازل والشركات.',
       lead: 'من الواي فاي والكابلات إلى الكاميرات وأتمتة المنازل، نصمم ونورّد ونركّب وندعم الأنظمة التي يعتمد عليها اتصالك.',
       btnSystems: 'اطلع على أنظمتنا', btnWa: 'واتساب',
-      f1: ['8', 'أنظمة نركّبها'], f2: ['4', 'علامات تجارية نوفرها'], f3: ['1', 'فريق من التصميم إلى الدعم'], f4: ['الدوحة', 'نخدم قطر'],
-      sysH: 'الأنظمة التي نركّبها', sysP: 'ثمانية أنظمة وفريق واحد. أضف ما تحتاجه إلى طلب عرض السعر.',
+      f1: ['9', 'أنظمة نركّبها'], f2: ['5', 'علامات تجارية نوفرها'], f3: ['1', 'فريق من التصميم إلى الدعم'], f4: ['الدوحة', 'نخدم قطر'],
+      sysH: 'الأنظمة التي نركّبها', sysP: 'تسعة أنظمة وفريق واحد. أضف ما تحتاجه إلى طلب عرض السعر.',
       add: 'أضف إلى الطلب', added: 'تمت الإضافة · إزالة', details: 'عرض التفاصيل',
       sys: [
         ['الواي فاي', 'نقاط وصول موزعة لتغطية كاملة، داخل المباني وخارجها.', 'UniFi'],
         ['الشبكات', 'سويتشات وكابلات، مصممة ومختبرة من البداية للنهاية.', 'UniFi'],
+        ['الجدار الناري', 'حماية الشبكة والتوجيه للمنازل والشركات.', 'Netgate وUniFi'],
         ['كاميرات المراقبة', 'أنظمة كاميرات للمنازل والشركات.', 'UniFi وHikvision'],
         ['محطة الباب', 'شاهد زوارك وتحدث معهم عند الباب.', 'Hikvision وGrandstream'],
         ['الهاتف عبر IP', 'أنظمة هاتف للمكاتب تعمل عبر شبكتك.', 'Grandstream'],
         ['أتمتة المنازل', 'الإضاءة والراحة والتحكم في نظام واحد.', ''],
-        ['التخزين الشبكي (NAS)', 'تخزين مشترك ونسخ احتياطي على شبكتك الخاصة.', 'Synology'],
+        ['التخزين', 'أجهزة NAS وأقراص تخزين ونسخ احتياطي على شبكتك الخاصة.', 'Synology'],
         ['تتبع السيارات', 'اعرف أين مركباتك.', '']
       ],
       servEy: 'كيف نعمل', servH: 'من أول مخطط إلى الصيانة السنوية.',
@@ -126,14 +136,15 @@
         ['التوريد والتركيب', 'توريد وتركيب أحدث المعدات والمكونات.'],
         ['الدعم', 'دعم بعد البيع وعقد صيانة سنوي.']
       ],
-      workEy: 'أعمالنا', workH: 'تركيبات ننفذها', workP: 'نظرة على أنواع الأنظمة التي نركّبها. نضيف صور المشاريع قريبًا.', soon: 'الصور قريبًا',
+      workEy: 'أعمالنا', workH: 'تركيبات ننفذها', workP: 'نظرة على أنواع الأنظمة والمعدات التي نركّبها.',
       supplyEy: 'التوريد', supplyH: 'ما نوفره ونركّبه',
       supply: [
         ['نقاط الوصول والسويتشات', 'UniFi', 'واي فاي وتبديل الشبكة'],
+        ['الجدران النارية', 'Netgate + UniFi', 'حماية الشبكة والتوجيه'],
         ['أنظمة الكاميرات', 'UniFi + Hikvision', 'مراقبة للمنازل والشركات'],
         ['محطات الأبواب', 'Hikvision + Grandstream', 'اتصال مرئي عند الباب'],
         ['الهاتف عبر IP', 'Grandstream', 'أنظمة هاتف للمكاتب'],
-        ['التخزين الشبكي', 'Synology', 'أجهزة NAS وأقراص تخزين']
+        ['التخزين', 'Synology', 'أجهزة NAS وأقراص تخزين']
       ],
       brandsLabel: 'العلامات التجارية التي نوفرها',
       tmEy: 'العملاء', tmH: 'ماذا يقول عملاؤنا',
@@ -173,12 +184,13 @@
   function waLink(text) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text); }
 
   function topology(L) {
-    var pts = [[240, 52, 0], [388, 112, 2], [412, 232, 6], [330, 340, 4], [150, 340, 3], [68, 232, 5], [92, 112, 1]];
-    var lines = '', nodes = '';
-    pts.forEach(function (p) {
-      lines += '<line class="ln" x1="240" y1="200" x2="' + p[0] + '" y2="' + p[1] + '"/>';
-      nodes += '<g><circle class="nd" cx="' + p[0] + '" cy="' + p[1] + '" r="26"/><circle class="dot" cx="' + p[0] + '" cy="' + p[1] + '" r="4"/>' +
-        '<text x="' + p[0] + '" y="' + (p[1] + (p[1] > 200 ? 46 : -36)) + '">' + esc(L.short[p[2]]) + '</text></g>';
+    var order = [0, 3, 7, 5, 8, 6, 4, 2], lines = '', nodes = '';
+    order.forEach(function (idx, n) {
+      var ang = (-90 + n * 45) * Math.PI / 180;
+      var x = Math.round(240 + 178 * Math.cos(ang)), y = Math.round(200 + 140 * Math.sin(ang));
+      lines += '<line class="ln" x1="240" y1="200" x2="' + x + '" y2="' + y + '"/>';
+      nodes += '<g><circle class="nd" cx="' + x + '" cy="' + y + '" r="24"/><circle class="dot" cx="' + x + '" cy="' + y + '" r="4"/>' +
+        '<text x="' + x + '" y="' + (y + (y > 190 ? 44 : -34)) + '">' + esc(L.short[idx]) + '</text></g>';
     });
     return '<svg class="topo" viewBox="0 0 480 400" role="img" aria-label="Network diagram"><circle class="pulse" cx="240" cy="200" r="40"/>' +
       lines + '<circle class="core" cx="240" cy="200" r="40"/><path d="M222 200h36M240 182v36" stroke="#60BA48" stroke-width="2.4" stroke-linecap="round"/>' + nodes + '</svg>';
@@ -187,7 +199,9 @@
   function tpl(L) {
     var cards = L.sys.map(function (s, i) {
       var href = 'system.html?id=' + IDS[i] + '&lang=' + state.lang;
-      return '<div class="card rv"><div class="ico">' + svg(IDS[i]) + '</div><h3><a href="' + href + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a></h3><span class="d">' + esc(s[1]) + '</span>' +
+      var ph = PHOTOS[IDS[i]];
+      var thumb = ph ? '<a class="thumb" tabindex="-1" aria-hidden="true" href="' + href + '" target="_blank" rel="noopener" style="background:' + ph.bg + '"><img src="' + ph.src + '" alt="" loading="lazy" style="object-fit:' + ph.fit + '"></a>' : '';
+      return '<div class="card rv">' + thumb + '<div class="ico">' + svg(IDS[i]) + '</div><h3><a href="' + href + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a></h3><span class="d">' + esc(s[1]) + '</span>' +
         (s[2] ? '<span class="b">' + esc(s[2]) + '</span>' : '') +
         '<div class="acts"><button type="button" class="addbtn" id="b-' + IDS[i] + '" data-id="' + IDS[i] + '"></button>' +
         '<a class="more" href="' + href + '" target="_blank" rel="noopener">' + esc(L.details) + ' ↗</a></div></div>';
@@ -195,21 +209,14 @@
     var steps = L.services.map(function (s, i) {
       return '<div class="step"><span class="no">0' + (i + 1) + '</span><h3>' + esc(s[0]) + '</h3><p>' + esc(s[1]) + '</p></div>';
     }).join('');
-    var shots;
-    if (PROJECTS.length) {
-      shots = PROJECTS.map(function (p) {
-        var t = p[state.lang === 'ar' ? 'ar' : 'en'] || p.en;
-        return '<div class="shot rv"><img src="' + esc(p.img) + '" alt="' + esc(t) + '" loading="lazy"><div class="cap"><b>' + esc(t) + '</b><span>' + esc(L.sys[p.sys || 0][0]) + '</span></div></div>';
-      }).join('');
-    } else {
-      shots = [0, 2, 1, 5, 6, 3].map(function (i) {
-        return '<div class="shot rv"><div class="art"></div><div class="cap"><b>' + esc(L.sys[i][0]) + '</b><span>' + esc(L.soon) + '</span></div></div>';
-      }).join('');
-    }
+    var shots = IDS.filter(function (id) { return PHOTOS[id]; }).map(function (id) {
+      var ph = PHOTOS[id], i = IDS.indexOf(id), name = L.sys[i][0];
+      return '<a class="shot rv" href="system.html?id=' + id + '&lang=' + state.lang + '" target="_blank" rel="noopener" style="background:' + ph.bg + '"><img src="' + ph.src + '" alt="' + esc(name) + '" loading="lazy" style="object-fit:' + ph.fit + '"><div class="cap"><b>' + esc(name) + '</b><span>' + esc(L.sys[i][2] || '') + '</span></div></a>';
+    }).join('');
     var tiles = L.supply.map(function (s) {
       return '<div class="tile"><b>' + esc(s[0]) + '</b><span class="br" dir="ltr" style="text-align:start">' + esc(s[1]) + '</span><span>' + esc(s[2]) + '</span></div>';
     }).join('');
-    var brands = ['UniFi', 'Hikvision', 'Grandstream', 'Synology'].map(function (b) {
+    var brands = ['UniFi', 'Hikvision', 'Grandstream', 'Synology', 'Netgate'].map(function (b) {
       return '<a class="brand-pill rv" href="#supply" dir="ltr">' + b + '</a>';
     }).join('');
     var tm = '';

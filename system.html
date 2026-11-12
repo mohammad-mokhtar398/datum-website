@@ -19,6 +19,8 @@
 .dh h1{font-size:56px}
 html[lang=ar] .dh h1{font-size:50px}
 .dh .big{flex:0 1 300px;aspect-ratio:1;border-radius:28px;background:linear-gradient(140deg,var(--blue),#14336B);display:grid;place-items:center;border:1px solid #2F5CAA;box-shadow:0 30px 70px -30px var(--blue)}
+.dh .big.photo{overflow:hidden;aspect-ratio:4/3;flex-basis:440px;padding:0}
+.dh .big.photo img{width:100%;height:100%;display:block}
 .dh .big svg{width:42%;height:42%;stroke:#fff;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 .chip{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px}
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
@@ -39,8 +41,17 @@ html[lang=ar] .dh h1{font-size:50px}
 <script>
 (function () {
   var WA = '97431313064';
-  var IDS = ['wifi', 'network', 'cctv', 'door', 'phone', 'home', 'nas', 'car'];
+  var IDS = ['wifi', 'network', 'fw', 'cctv', 'door', 'phone', 'home', 'nas', 'car'];
+  var PHOTOS = {
+    wifi: { src: 'assets/img/wifi.jpg', fit: 'contain', bg: '#ffffff' },
+    network: { src: 'assets/img/network.jpg', fit: 'cover', bg: '#1b1f27' },
+    cctv: { src: 'assets/img/cctv.jpg', fit: 'cover', bg: '#15161b' },
+    door: { src: 'assets/img/door.jpg', fit: 'contain', bg: '#ffffff' },
+    home: { src: 'assets/img/home.jpg', fit: 'cover', bg: '#061123' },
+    nas: { src: 'assets/img/nas.jpg', fit: 'contain', bg: '#ffffff' }
+  };
   var ICONS = {
+    fw: 'M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z M9 12l2 2 4-4',
     wifi: 'M2 9a15 15 0 0 1 20 0 M5.5 12.5a10 10 0 0 1 13 0 M9 16a5 5 0 0 1 6 0 M12 19.5h.01',
     network: 'M9 3h6v5H9z M3 16h6v5H3z M15 16h6v5h-6z M12 8v4 M6 16v-4h12v4',
     cctv: 'M3 7l12-3 2 7-12 3z M17 8l4-1v5l-3 .8 M9 15v4 M6 19h6',
@@ -63,6 +74,10 @@ html[lang=ar] .dh h1{font-size:50px}
         'The wired backbone behind everything else: switching and cabling, designed and tested from end to end.',
         ['Structured cabling design and installation', 'PoE and managed switching', 'Cable testing with advanced tools', 'Documentation of the finished network'],
         ['New buildings and fit-outs', 'Office moves and expansions', 'Upgrading slow or unreliable networks']],
+      fw: ['Firewall', 'Network security and routing for homes and businesses.', 'Netgate and UniFi',
+        'Protect your network and control what comes in and out, with firewalls from Netgate and UniFi.',
+        ['Firewall selection to suit the size of your network', 'Netgate and UniFi firewall setup', 'Rules, VPN and remote access configuration where needed', 'Support after installation'],
+        ['Offices and branches', 'Homes with advanced networks', 'Businesses that need secure remote access']],
       cctv: ['CCTV', 'Camera systems for homes and businesses.', 'UniFi and Hikvision',
         'Camera systems that cover the areas that matter, with recording and remote viewing set up for you.',
         ['Camera selection and placement', 'Recorder or network video setup', 'Remote viewing on your phone', 'Cabling, power and configuration'],
@@ -79,8 +94,8 @@ html[lang=ar] .dh h1{font-size:50px}
         'Lighting, comfort and control working as one system, instead of separate switches and apps.',
         ['Lighting and scene control', 'Comfort and climate control', 'Control from wall panels and your phone', 'Planned together with your network and wiring'],
         ['New homes and villas', 'Renovations', 'Apartments']],
-      nas: ['Network-attached storage', 'Shared storage and backups on your own network.', 'Synology',
-        'Shared storage and backups on your own network, so your files stay in your hands.',
+      nas: ['Storage', 'NAS stations, hard drives and backups on your own network.', 'Synology',
+        'Shared storage, hard drives and backups on your own network, so your files stay in your hands.',
         ['NAS and hard drive supply and setup', 'Shared folders and user access', 'Automatic backups', 'Remote access setup'],
         ['Offices sharing files', 'Homes with photo and media libraries', 'Businesses that need local backups']],
       car: ['Car tracking', 'Know where your vehicles are.', '',
@@ -97,6 +112,10 @@ html[lang=ar] .dh h1{font-size:50px}
         'العمود الفقري السلكي لكل ما عداه: سويتشات وكابلات، مصممة ومختبرة من البداية للنهاية.',
         ['تصميم وتركيب الكابلات المهيكلة', 'سويتشات PoE وسويتشات مُدارة', 'اختبار الكابلات بأدوات متقدمة', 'توثيق الشبكة بعد الانتهاء'],
         ['المباني الجديدة وأعمال التجهيز', 'انتقال المكاتب وتوسعتها', 'تطوير الشبكات البطيئة أو غير المستقرة']],
+      fw: ['الجدار الناري', 'حماية الشبكة والتوجيه للمنازل والشركات.', 'Netgate وUniFi',
+        'احمِ شبكتك وتحكم فيما يدخل ويخرج منها، بجدران نارية من Netgate وUniFi.',
+        ['اختيار الجدار الناري المناسب لحجم شبكتك', 'إعداد جدران Netgate وUniFi النارية', 'ضبط القواعد وVPN والوصول عن بعد عند الحاجة', 'الدعم بعد التركيب'],
+        ['المكاتب والفروع', 'المنازل ذات الشبكات المتقدمة', 'الشركات التي تحتاج وصولًا آمنًا عن بعد']],
       cctv: ['كاميرات المراقبة', 'أنظمة كاميرات للمنازل والشركات.', 'UniFi وHikvision',
         'أنظمة كاميرات تغطي المناطق المهمة، مع إعداد التسجيل والمشاهدة عن بعد.',
         ['اختيار الكاميرات وتحديد أماكنها', 'إعداد جهاز التسجيل أو التسجيل عبر الشبكة', 'المشاهدة عن بعد على هاتفك', 'الكابلات والتغذية والإعداد'],
@@ -113,8 +132,8 @@ html[lang=ar] .dh h1{font-size:50px}
         'الإضاءة والراحة والتحكم في نظام واحد بدل المفاتيح والتطبيقات المنفصلة.',
         ['التحكم في الإضاءة والمشاهد', 'التحكم في الراحة والتكييف', 'التحكم من لوحات الحائط وهاتفك', 'تخطيط متكامل مع شبكتك وتمديداتك'],
         ['المنازل والفلل الجديدة', 'أعمال التجديد', 'الشقق']],
-      nas: ['التخزين الشبكي (NAS)', 'تخزين مشترك ونسخ احتياطي على شبكتك الخاصة.', 'Synology',
-        'تخزين مشترك ونسخ احتياطي على شبكتك الخاصة، لتبقى ملفاتك بين يديك.',
+      nas: ['التخزين', 'أجهزة NAS وأقراص تخزين ونسخ احتياطي على شبكتك الخاصة.', 'Synology',
+        'تخزين مشترك وأقراص ونسخ احتياطي على شبكتك الخاصة، لتبقى ملفاتك بين يديك.',
         ['توريد وإعداد أجهزة NAS وأقراص التخزين', 'مجلدات مشتركة وصلاحيات للمستخدمين', 'نسخ احتياطي تلقائي', 'إعداد الوصول عن بعد'],
         ['المكاتب التي تتشارك الملفات', 'المنازل التي تحتفظ بمكتبات صور ووسائط', 'الشركات التي تحتاج نسخًا احتياطية محلية']],
       car: ['تتبع السيارات', 'اعرف أين مركباتك.', '',
@@ -171,7 +190,8 @@ html[lang=ar] .dh h1{font-size:50px}
     var gen = 'https://wa.me/' + WA;
     var rel = IDS.filter(function (x) { return x !== id; }).slice(0, 3).map(function (x) {
       var r = D[lang][x];
-      return '<div class="card rv"><div class="ico">' + svg(x) + '</div><h3><a href="system.html?id=' + x + '&lang=' + lang + '">' + esc(r[0]) + '</a></h3><span class="d">' + esc(r[1]) + '</span>' +
+      var ph = PHOTOS[x];
+      return '<div class="card rv">' + (ph ? '<a class="thumb" tabindex="-1" aria-hidden="true" href="system.html?id=' + x + '&lang=' + lang + '" style="background:' + ph.bg + '"><img src="' + ph.src + '" alt="" loading="lazy" style="object-fit:' + ph.fit + '"></a>' : '') + '<div class="ico">' + svg(x) + '</div><h3><a href="system.html?id=' + x + '&lang=' + lang + '">' + esc(r[0]) + '</a></h3><span class="d">' + esc(r[1]) + '</span>' +
         '<div class="acts"><a class="more" href="system.html?id=' + x + '&lang=' + lang + '">' + esc(L.view) + '</a></div></div>';
     }).join('');
     var steps = L.steps.map(function (s, i) { return '<div class="step"><span class="no">0' + (i + 1) + '</span><h3>' + esc(s[0]) + '</h3><p>' + esc(s[1]) + '</p></div>'; }).join('');
@@ -189,7 +209,7 @@ html[lang=ar] .dh h1{font-size:50px}
       '<p class="lead">' + esc(d[3]) + '</p>' +
       (d[2] ? '<span class="chip"' + (lang === 'en' ? ' dir="ltr"' : '') + '>' + esc(L.brands) + ' · ' + esc(d[2]) + '</span>' : '') +
       '<div class="row"><a class="btn fill" href="' + wa + '" target="_blank" rel="noopener">' + esc(L.ctaBtn) + '</a><a class="btn" href="index.html#systems">' + esc(L.ctaAll) + '</a></div></div>' +
-      '<div class="big">' + svg(id) + '</div></div></div></section>' +
+      (PHOTOS[id] ? '<div class="big photo" style="background:' + PHOTOS[id].bg + '"><img src="' + PHOTOS[id].src + '" alt="' + esc(d[0]) + '" style="object-fit:' + PHOTOS[id].fit + '"></div>' : '<div class="big">' + svg(id) + '</div>') + '</div></div></section>' +
 
       '<section class="sec"><div class="wrap"><div class="cols">' +
       '<div class="panel rv"><h2>' + esc(L.incH) + '</h2><ul class="ticks">' + li(d[4]) + '</ul></div>' +
