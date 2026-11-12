@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datum Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+:root{--bg:#F3F6F4;--ink:#10201A;--ink2:#2F4A3E;--ink3:#3D5A4D;--line:#D6E1DB;--line2:#C5D4CB;--green:#1B7352;--accent:#45BC89;--mint:#9CC4B2;--pale:#CFE3D8;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55}
+html[lang=ar] body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;font-size:17px;line-height:1.7}
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #1B7352;outline-offset:2px}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+.row{display:flex;flex-wrap:wrap;gap:12px 24px}
+.between{justify-content:space-between}
+.disp{font-family:'Space Grotesk',sans-serif}
+html[lang=ar] .disp{font-family:'IBM Plex Sans Arabic',sans-serif}
+html[lang=en] .disp{letter-spacing:-0.02em}
+.mono{font-family:'JetBrains Mono',monospace}
+.top{background:var(--ink);color:var(--pale);font-size:14px;padding:10px 0}
+.top a,.top button{color:var(--pale)}
+.lang{font:inherit;background:transparent;border:0;padding:0;cursor:pointer;text-decoration:underline}
+.nav{border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding-top:20px;padding-bottom:20px}
+.brand{display:flex;align-items:baseline;gap:8px;color:var(--ink)}
+.brand b{font-family:'Space Grotesk',sans-serif;font-size:26px;letter-spacing:-0.02em}
+.brand span{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.links{display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px;font-weight:500}
+.links a{color:var(--ink)}
+.pill{border:1px solid var(--ink);border-radius:8px;padding:8px 16px}
+.hero{display:flex;flex-wrap:wrap;align-items:center;gap:48px;padding-top:88px;padding-bottom:96px}
+.hero>div{flex:1 1 480px;min-width:0}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);font-weight:500}
+html[lang=ar] .eyebrow{font-size:15px;letter-spacing:0;text-transform:none;font-weight:600}
+h1{margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:64px;line-height:1.04;letter-spacing:-0.03em;text-wrap:balance}
+html[lang=ar] h1{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:56px;line-height:1.25;letter-spacing:0}
+h2{margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:40px;line-height:1.1;letter-spacing:-0.02em;text-wrap:balance}
+html[lang=ar] h2{font-family:'IBM Plex Sans Arabic',sans-serif;line-height:1.3;letter-spacing:0}
+.lead{margin:0;font-size:19px;max-width:540px;color:var(--ink2)}
+.stack{display:flex;flex-direction:column;gap:28px}
+.btn{display:inline-block;font:inherit;font-weight:600;padding:14px 24px;border-radius:8px;text-decoration:none!important;border:1.5px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer}
+.btn.fill{background:var(--accent);border-color:var(--accent);color:#0B1F17}
+.face{background:var(--ink);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:20px;direction:ltr}
+.face .cap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mint)}
+.ports{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:8px}
+.port{aspect-ratio:1/1.05;background:#0A1511;border:1px solid #27443A;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:5px 0 4px}
+.port i{display:block;width:7px;height:7px;border-radius:50%}
+.port u{display:block;width:62%;height:38%;background:#1D3329;border-radius:2px}
+.up{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #27443A;padding-top:16px}
+.up div{display:flex;gap:8px}
+.up em{display:block;width:44px;height:24px;background:#0A1511;border:1px solid #27443A;border-radius:3px}
+.band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec{padding-top:88px;padding-bottom:88px;display:flex;flex-direction:column;gap:40px}
+.cards{display:flex;flex-wrap:wrap;gap:16px}
+.card{flex:1 1 280px;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.card .n{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px}
+html[lang=ar] .card .n{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:22px}
+.card .l{color:var(--ink2);font-size:15px}
+.card .b{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green)}
+html[lang=ar] .card .b{font-family:inherit;font-size:14px;font-weight:600}
+.addbtn{margin-top:8px;align-self:flex-start;font:inherit;font-weight:600;font-size:14px;padding:10px 16px;min-height:44px;border-radius:8px;cursor:pointer;background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.addbtn.on{background:var(--ink);color:#fff}
+.two{display:flex;flex-wrap:wrap;gap:48px}
+.two>div{min-width:0}
+.svc{display:flex;flex-wrap:wrap;gap:8px 32px;padding:24px 0;border-top:1px solid var(--line2)}
+.svc .a{flex:1 1 220px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px}
+html[lang=ar] .svc .a{font-family:'IBM Plex Sans Arabic',sans-serif}
+.svc .c{flex:2 1 320px;min-width:0;color:var(--ink2)}
+.tile{flex:1 1 220px;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:16px}
+.tile .k{background:var(--ink);border-radius:6px;min-height:88px;padding:12px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;font-weight:500;color:var(--mint)}
+.tile .nm{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;line-height:1.25}
+.tile .sp{font-size:14px;color:var(--ink3)}
+.brands{display:flex;flex-wrap:wrap;gap:16px 56px;align-items:baseline}
+.brands a{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:-0.02em;color:var(--ink)}
+.q-list{display:flex;flex-direction:column;border-top:1px solid var(--line2)}
+.q-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line2)}
+.q-item b{font-weight:600;font-size:19px}
+.q-item button{font:inherit;font-size:14px;font-weight:600;color:var(--green);background:transparent;border:0;padding:10px 4px;min-height:44px;cursor:pointer}
+.q-empty{margin:0;padding:18px 0;color:var(--ink3);border-bottom:1px solid var(--line2)}
+.form{background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:18px}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-weight:600;font-size:14px}
+.fld input,.fld textarea{font:inherit;padding:12px 14px;border:1.5px solid #8FA79A;border-radius:8px;background:#fff;color:var(--ink);width:100%}
+html[dir=rtl] input[dir=ltr]{text-align:right}
+.send{display:block;text-align:center;font-weight:600;padding:14px 24px;border-radius:8px;text-decoration:none!important;background:#D6E1DB;color:var(--ink3)}
+.send.ready{background:var(--accent);color:#0B1F17}
+.small{font-size:14px;color:var(--ink3)}
+.contact{background:var(--ink);color:#fff;border-radius:16px;padding:64px;display:flex;flex-wrap:wrap;gap:48px;margin-bottom:88px}
+.contact>div{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.contact h2{font-size:44px}
+.contact p{margin:0;color:var(--pale);font-size:18px;max-width:460px}
+.contact .lb{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mint)}
+html[lang=ar] .contact .lb{font-family:inherit;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none}
+.contact .v{font-size:18px}
+.contact .g{display:flex;flex-direction:column;gap:4px}
+.contact a.l{color:var(--accent)}
+.foot{border-top:1px solid var(--line);font-size:14px;color:var(--ink3)}
+.foot .wrap{padding-top:28px;padding-bottom:28px}
+.foot a{color:var(--ink3)}
+@media (max-width:720px){
+.wrap{padding:0 16px}
+h1{font-size:40px}html[lang=ar] h1{font-size:36px}
+h2{font-size:32px}
+.hero{padding-top:48px;padding-bottom:56px;gap:32px}
+.sec{padding-top:56px;padding-bottom:56px}
+.contact{padding:32px 20px;gap:32px;margin-bottom:56px}
+.contact h2{font-size:34px}
+.form{padding:20px}
+.face{padding:16px}
+.ports{gap:5px}
+.brands a{font-size:28px}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+(function () {
+  var WA = '97431313064';
+  var IG = 'https://www.instagram.com/datum.qa/';
+  var MAP = 'https://maps.app.goo.gl/qoNauScXGs4P1Act8';
+  var IDS = ['wifi', 'network', 'cctv', 'door', 'phone', 'home', 'nas', 'car'];
+
+  var T = {
+    en: {
+      dir: 'ltr', other: 'العربية',
+      hours: 'Open Saturday to Thursday, 9 AM to 6 PM',
+      navSystems: 'Systems', navServices: 'Services', navBrands: 'Brands', navContact: 'Contact', navQuote: 'Quote request',
+      eyebrow: 'IT, networking and smart homes in Qatar',
+      h1: 'Networks that work, in homes and businesses.',
+      lead: 'From Wi-Fi and cabling to CCTV and home automation, we design, supply, install and support the systems your connection depends on.',
+      btnSystems: 'See our systems', btnContact: 'Contact us', btnWa: 'WhatsApp us',
+      faceA: '24-port PoE switch', faceB: 'Link up', faceC: '4 x 10G uplink',
+      sysH: 'Systems we install', sysP: 'Eight systems, one team. Add the ones you need to your quote request.',
+      add: 'Add to quote', added: 'Added · Remove',
+      sys: [
+        ['Wi-Fi', 'Access points placed for coverage, indoors and outdoors.', 'UniFi'],
+        ['Network', 'Switching and cabling, designed and tested end to end.', 'UniFi'],
+        ['CCTV', 'Camera systems for homes and businesses.', 'UniFi and Hikvision'],
+        ['Door station', 'See and speak to visitors at the door.', 'Hikvision and Grandstream'],
+        ['IP telephone', 'Office phone systems that run over your network.', 'Grandstream'],
+        ['Home automation', 'Lighting, comfort and control working as one system.', ''],
+        ['Network-attached storage', 'Shared storage and backups on your own network.', 'Synology'],
+        ['Car tracking', 'Know where your vehicles are.', '']
+      ],
+      quoteH: 'Your quote request',
+      quoteP: 'Add the systems you need above, enter your details, and send the request to us on WhatsApp.',
+      none: 'No systems selected yet. Use Add to quote on the systems above.',
+      remove: 'Remove',
+      lblName: 'Name', lblPhone: 'Phone number', lblEmail: 'Email (optional)', lblNote: 'Project details (optional)',
+      send: 'Send on WhatsApp',
+      missing: 'To send, choose at least one system and enter your name and phone number.',
+      waNote: 'WhatsApp opens with your request filled in. Press send there to deliver it to us.',
+      servH: 'From the first drawing to the annual service.',
+      servP: 'We support businesses and homes with the latest technology, and we stay after the install.',
+      services: [
+        ['Design and configuration', 'Design and configuration to meet the connectivity you need.'],
+        ['Testing network', 'Network infrastructure tested with advanced tools to qualify all cabling.'],
+        ['Supply and installation', 'Supply and installation of the latest equipment and components.'],
+        ['Support', 'After-sale support and an annual maintenance contract.']
+      ],
+      supplyH: 'What we supply and install',
+      supply: [
+        ['Access points and switches', 'UniFi', 'Wi-Fi and network switching'],
+        ['Camera systems', 'UniFi and Hikvision', 'CCTV for homes and businesses'],
+        ['Door stations', 'Hikvision and Grandstream', 'Video door entry'],
+        ['IP telephone', 'Grandstream', 'Office phone systems'],
+        ['Network storage', 'Synology', 'NAS stations and hard drives']
+      ],
+      brandsLabel: 'Brands we supply',
+      contactH: 'We are open for partnership.',
+      contactP: 'Have a project for us? Get in touch and tell us what you need connected.',
+      contactBtn: 'Request a quote on WhatsApp',
+      lblPhones: 'Phone', lblMail: 'Email', lblInsta: 'Instagram', lblAddr: 'Address', lblHours: 'Business hours',
+      address: 'Zone 32, Street 370, Building 382, Unit 0, Doha, Qatar', map: 'View on map',
+      hoursLong: 'Saturday to Thursday, 9 AM to 6 PM',
+      rights: 'Datum Technologies. All rights reserved.',
+      wHello: 'Hello Datum, I would like a quote.', wName: 'Name', wPhone: 'Phone', wEmail: 'Email', wSystems: 'Systems', wDetails: 'Details', wFrom: 'Sent from the Datum website',
+      wGeneric: 'Hello Datum, I would like a quote'
+    },
+    ar: {
+      dir: 'rtl', other: 'English',
+      hours: 'مفتوح من السبت إلى الخميس، 9 صباحًا حتى 6 مساءً',
+      navSystems: 'الأنظمة', navServices: 'الخدمات', navBrands: 'العلامات التجارية', navContact: 'تواصل معنا', navQuote: 'طلب عرض سعر',
+      eyebrow: 'تقنية المعلومات والشبكات والمنازل الذكية في قطر',
+      h1: 'شبكات تعمل بكفاءة، في المنازل والشركات.',
+      lead: 'من الواي فاي والكابلات إلى الكاميرات وأتمتة المنازل، نصمم ونورّد ونركّب وندعم الأنظمة التي يعتمد عليها اتصالك.',
+      btnSystems: 'اطلع على أنظمتنا', btnContact: 'تواصل معنا', btnWa: 'واتساب',
+      faceA: '24-port PoE switch', faceB: 'Link up', faceC: '4 x 10G uplink',
+      sysH: 'الأنظمة التي نركّبها', sysP: 'ثمانية أنظمة وفريق واحد. أضف ما تحتاجه إلى طلب عرض السعر.',
+      add: 'أضف إلى الطلب', added: 'تمت الإضافة · إزالة',
+      sys: [
+        ['الواي فاي', 'نقاط وصول موزعة لتغطية كاملة، داخل المباني وخارجها.', 'UniFi'],
+        ['الشبكات', 'سويتشات وكابلات، مصممة ومختبرة من البداية للنهاية.', 'UniFi'],
+        ['كاميرات المراقبة', 'أنظمة كاميرات للمنازل والشركات.', 'UniFi وHikvision'],
+        ['محطة الباب', 'شاهد زوارك وتحدث معهم عند الباب.', 'Hikvision وGrandstream'],
+        ['الهاتف عبر IP', 'أنظمة هاتف للمكاتب تعمل عبر شبكتك.', 'Grandstream'],
+        ['أتمتة المنازل', 'الإضاءة والراحة والتحكم في نظام واحد.', ''],
+        ['التخزين الشبكي (NAS)', 'تخزين مشترك ونسخ احتياطي على شبكتك الخاصة.', 'Synology'],
+        ['تتبع السيارات', 'اعرف أين مركباتك.', '']
+      ],
+      quoteH: 'طلب عرض السعر',
+      quoteP: 'أضف الأنظمة التي تحتاجها من القائمة أعلاه، واكتب بياناتك، ثم أرسل الطلب إلينا عبر واتساب.',
+      none: 'لم تختر أي نظام بعد. استخدم زر أضف إلى الطلب في الأنظمة أعلاه.',
+      remove: 'إزالة',
+      lblName: 'الاسم', lblPhone: 'رقم الهاتف', lblEmail: 'البريد الإلكتروني (اختياري)', lblNote: 'تفاصيل المشروع (اختياري)',
+      send: 'إرسال عبر واتساب',
+      missing: 'للإرسال، اختر نظامًا واحدًا على الأقل واكتب اسمك ورقم هاتفك.',
+      waNote: 'سيفتح واتساب وفيه طلبك مكتوبًا. اضغط إرسال هناك ليصلنا.',
+      servH: 'من أول مخطط إلى الصيانة السنوية.',
+      servP: 'ندعم الشركات والمنازل بأحدث التقنيات، ونبقى معك بعد التركيب.',
+      services: [
+        ['التصميم والإعداد', 'تصميم وإعداد الشبكة بما يحقق الاتصال الذي تحتاجه.'],
+        ['اختبار الشبكة', 'اختبار البنية التحتية للشبكة بأدوات متقدمة للتأكد من جودة كل الكابلات.'],
+        ['التوريد والتركيب', 'توريد وتركيب أحدث المعدات والمكونات.'],
+        ['الدعم', 'دعم بعد البيع وعقد صيانة سنوي.']
+      ],
+      supplyH: 'ما نوفره ونركّبه',
+      supply: [
+        ['نقاط الوصول والسويتشات', 'UniFi', 'واي فاي وتبديل الشبكة'],
+        ['أنظمة الكاميرات', 'UniFi + Hikvision', 'مراقبة للمنازل والشركات'],
+        ['محطات الأبواب', 'Hikvision + Grandstream', 'اتصال مرئي عند الباب'],
+        ['الهاتف عبر IP', 'Grandstream', 'أنظمة هاتف للمكاتب'],
+        ['التخزين الشبكي', 'Synology', 'أجهزة NAS وأقراص تخزين']
+      ],
+      brandsLabel: 'العلامات التجارية التي نوفرها',
+      contactH: 'نرحب بالشراكة.',
+      contactP: 'لديك مشروع؟ تواصل معنا وأخبرنا ما الذي تريد ربطه.',
+      contactBtn: 'اطلب عرض سعر عبر واتساب',
+      lblPhones: 'الهاتف', lblMail: 'البريد الإلكتروني', lblInsta: 'إنستجرام', lblAddr: 'العنوان', lblHours: 'ساعات العمل',
+      address: 'المنطقة 32، شارع 370، مبنى 382، وحدة 0، الدوحة، قطر', map: 'عرض على الخريطة',
+      hoursLong: 'من السبت إلى الخميس، 9 صباحًا حتى 6 مساءً',
+      rights: 'داتوم تكنولوجيز. جميع الحقوق محفوظة.',
+      wHello: 'مرحبًا داتوم، أرغب في الحصول على عرض سعر.', wName: 'الاسم', wPhone: 'الهاتف', wEmail: 'البريد الإلكتروني', wSystems: 'الأنظمة المطلوبة', wDetails: 'التفاصيل', wFrom: 'أُرسل من موقع داتوم',
+      wGeneric: 'مرحبًا داتوم، أرغب في الحصول على عرض سعر'
+    }
+  };
+
+  var LIT = [0, 1, 2, 4, 5, 7, 8, 11, 12, 13, 15, 18, 19, 21];
+  var state = { lang: 'en', sel: [], name: '', phone: '', email: '', note: '' };
+  var app = document.getElementById('app');
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function waLink(text) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text); }
+
+  function tpl(L) {
+    var ports = '';
+    for (var i = 0; i < 24; i++) {
+      var c = '#2A4A3D';
+      if (LIT.indexOf(i) >= 0) c = '#45BC89';
+      if (i === 9 || i === 22) c = '#E0A83A';
+      ports += '<div class="port"><i style="background:' + c + '"></i><u></u></div>';
+    }
+    var cards = L.sys.map(function (s, i) {
+      return '<div class="card"><span class="n">' + esc(s[0]) + '</span><span class="l">' + esc(s[1]) + '</span>' +
+        (s[2] ? '<span class="b">' + esc(s[2]) + '</span>' : '') +
+        '<button type="button" class="addbtn" id="b-' + IDS[i] + '" data-id="' + IDS[i] + '"></button></div>';
+    }).join('');
+    var services = L.services.map(function (s) {
+      return '<div class="svc"><div class="a">' + esc(s[0]) + '</div><div class="c">' + esc(s[1]) + '</div></div>';
+    }).join('');
+    var supply = L.supply.map(function (s) {
+      return '<div class="tile"><div class="k">' + esc(s[0]) + '</div><div><div class="nm" dir="ltr" style="text-align:start">' + esc(s[1]) + '</div><div class="sp">' + esc(s[2]) + '</div></div></div>';
+    }).join('');
+    var brands = ['UniFi', 'Hikvision', 'Grandstream', 'Synology'].map(function (b) {
+      return '<a href="#supply">' + b + '</a>';
+    }).join('');
+    var gen = waLink(L.wGeneric);
+
+    return '' +
+      '<div class="top"><div class="wrap row between"><span>' + esc(L.hours) + '</span><div class="row">' +
+      '<span class="mono" dir="ltr">+974 4441 0210</span>' +
+      '<a href="' + IG + '" target="_blank" rel="noopener">Instagram</a>' +
+      '<button type="button" class="lang" id="langBtn">' + esc(L.other) + '</button></div></div></div>' +
+
+      '<div class="nav"><div class="wrap"><a href="#top" class="brand" dir="ltr"><b>Datum</b><span>Technologies</span></a>' +
+      '<div class="links"><a href="#systems">' + esc(L.navSystems) + '</a><a href="#services">' + esc(L.navServices) + '</a>' +
+      '<a href="#brands">' + esc(L.navBrands) + '</a><a href="#contact">' + esc(L.navContact) + '</a>' +
+      '<a href="#quote" class="pill">' + esc(L.navQuote) + ' (<span data-nav-count>0</span>)</a></div></div></div>' +
+
+      '<div id="top" class="wrap hero"><div class="stack">' +
+      '<span class="eyebrow">' + esc(L.eyebrow) + '</span><h1>' + esc(L.h1) + '</h1><p class="lead">' + esc(L.lead) + '</p>' +
+      '<div class="row" style="gap:12px"><a class="btn fill" href="#systems">' + esc(L.btnSystems) + '</a>' +
+      '<a class="btn" href="#contact">' + esc(L.btnContact) + '</a>' +
+      '<a class="btn" href="' + gen + '" target="_blank" rel="noopener">' + esc(L.btnWa) + '</a></div></div>' +
+      '<div><div class="face"><div class="cap"><span>' + L.faceA + '</span><span>' + L.faceB + '</span></div>' +
+      '<div class="ports">' + ports + '</div>' +
+      '<div class="up"><span class="cap" style="display:block">' + L.faceC + '</span><div><em></em><em></em><em></em><em></em></div></div></div></div></div>' +
+
+      '<div id="systems" class="band"><div class="wrap sec"><div style="display:flex;flex-direction:column;gap:12px;max-width:640px">' +
+      '<h2>' + esc(L.sysH) + '</h2><p style="margin:0;color:var(--ink2)">' + esc(L.sysP) + '</p></div><div class="cards">' + cards + '</div></div></div>' +
+
+      '<div id="quote" class="wrap"><div class="two" style="padding-top:88px;padding-bottom:24px">' +
+      '<div style="flex:1 1 380px;display:flex;flex-direction:column;gap:20px"><h2>' + esc(L.quoteH) + '</h2>' +
+      '<p style="margin:0;color:var(--ink2);max-width:460px">' + esc(L.quoteP) + '</p><div class="q-list" id="qList"></div></div>' +
+      '<div class="form" style="flex:1 1 380px">' +
+      '<div class="fld"><label for="q-name">' + esc(L.lblName) + '</label><input id="q-name" type="text" autocomplete="name"></div>' +
+      '<div class="fld"><label for="q-phone">' + esc(L.lblPhone) + '</label><input id="q-phone" type="tel" dir="ltr" autocomplete="tel"></div>' +
+      '<div class="fld"><label for="q-email">' + esc(L.lblEmail) + '</label><input id="q-email" type="email" dir="ltr" autocomplete="email"></div>' +
+      '<div class="fld"><label for="q-note">' + esc(L.lblNote) + '</label><textarea id="q-note" rows="3"></textarea></div>' +
+      '<a id="send" class="send" href="#quote" aria-disabled="true">' + esc(L.send) + '</a>' +
+      '<span class="small" id="missing">' + esc(L.missing) + '</span><span class="small">' + esc(L.waNote) + '</span></div></div></div>' +
+
+      '<div id="services" class="wrap"><div class="two" style="padding-top:88px;padding-bottom:88px">' +
+      '<div style="flex:1 1 340px;display:flex;flex-direction:column;gap:16px"><h2>' + esc(L.servH) + '</h2>' +
+      '<p style="margin:0;color:var(--ink2);max-width:440px">' + esc(L.servP) + '</p></div>' +
+      '<div style="flex:2 1 560px;display:flex;flex-direction:column">' + services + '</div></div></div>' +
+
+      '<div id="supply" class="band"><div class="wrap sec"><h2>' + esc(L.supplyH) + '</h2><div class="cards">' + supply + '</div></div></div>' +
+
+      '<div id="brands" class="wrap" style="padding-top:72px;padding-bottom:72px;display:flex;flex-direction:column;gap:28px">' +
+      '<span class="small" style="font-weight:600">' + esc(L.brandsLabel) + '</span><div class="brands">' + brands + '</div></div>' +
+
+      '<div id="contact" class="wrap"><div class="contact"><div><h2>' + esc(L.contactH) + '</h2><p>' + esc(L.contactP) + '</p>' +
+      '<div><a class="btn fill" href="' + gen + '" target="_blank" rel="noopener">' + esc(L.contactBtn) + '</a></div></div>' +
+      '<div><div class="g"><span class="lb">' + esc(L.lblPhones) + '</span>' +
+      '<span class="mono v" dir="ltr" style="text-align:start">+974 4441 0210</span>' +
+      '<span class="mono v" dir="ltr" style="text-align:start">+974 3302 2201</span>' +
+      '<span class="mono v" dir="ltr" style="text-align:start">+974 3131 3064 · WhatsApp</span></div>' +
+      '<div class="g"><span class="lb">' + esc(L.lblMail) + '</span><span class="mono v" dir="ltr" style="text-align:start">info@datum.qa</span></div>' +
+      '<div class="g"><span class="lb">' + esc(L.lblInsta) + '</span><a class="l mono v" href="' + IG + '" target="_blank" rel="noopener" dir="ltr" style="text-align:start">@datum.qa</a></div>' +
+      '<div class="g"><span class="lb">' + esc(L.lblAddr) + '</span><span class="v">' + esc(L.address) + '</span>' +
+      '<a class="l" href="' + MAP + '" target="_blank" rel="noopener">' + esc(L.map) + '</a></div>' +
+      '<div class="g"><span class="lb">' + esc(L.lblHours) + '</span><span class="v">' + esc(L.hoursLong) + '</span></div></div></div></div>' +
+
+      '<div class="foot"><div class="wrap row between"><span>' + esc(L.rights) + '</span><div class="row">' +
+      '<a href="#systems">' + esc(L.navSystems) + '</a><a href="#services">' + esc(L.navServices) + '</a>' +
+      '<a href="#contact">' + esc(L.navContact) + '</a><a href="' + IG + '" target="_blank" rel="noopener">Instagram</a></div></div></div>';
+  }
+
+  function chosen(L) {
+    var out = [];
+    IDS.forEach(function (id, i) {
+      if (state.sel.indexOf(id) >= 0) out.push({ id: id, name: L.sys[i][0] });
+    });
+    return out;
+  }
+
+  function update() {
+    var L = T[state.lang];
+    var ch = chosen(L);
+    var counts = document.querySelectorAll('[data-nav-count]');
+    for (var k = 0; k < counts.length; k++) counts[k].textContent = ch.length;
+
+    IDS.forEach(function (id) {
+      var b = document.getElementById('b-' + id);
+      if (!b) return;
+      var on = state.sel.indexOf(id) >= 0;
+      b.textContent = on ? L.added : L.add;
+      b.className = 'addbtn' + (on ? ' on' : '');
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+
+    var list = document.getElementById('qList');
+    if (ch.length === 0) {
+      list.innerHTML = '<p class="q-empty">' + esc(L.none) + '</p>';
+    } else {
+      list.innerHTML = ch.map(function (c) {
+        return '<div class="q-item"><b>' + esc(c.name) + '</b><button type="button" data-remove="' + c.id + '" aria-label="' + esc(L.remove + ' ' + c.name) + '">' + esc(L.remove) + '</button></div>';
+      }).join('');
+    }
+
+    var phoneOk = state.phone.replace(/[^0-9]/g, '').length >= 6;
+    var can = ch.length > 0 && state.name.trim() !== '' && phoneOk;
+    var send = document.getElementById('send');
+    var missing = document.getElementById('missing');
+    if (can) {
+      var lines = [L.wHello, '', L.wName + ': ' + state.name.trim(), L.wPhone + ': ' + state.phone.trim()];
+      if (state.email.trim() !== '') lines.push(L.wEmail + ': ' + state.email.trim());
+      lines.push(L.wSystems + ':');
+      ch.forEach(function (c) { lines.push('- ' + c.name); });
+      if (state.note.trim() !== '') lines.push(L.wDetails + ': ' + state.note.trim());
+      lines.push('', L.wFrom);
+      send.href = waLink(lines.join('\n'));
+      send.target = '_blank';
+      send.rel = 'noopener';
+      send.className = 'send ready';
+      send.setAttribute('aria-disabled', 'false');
+      missing.style.display = 'none';
+    } else {
+      send.href = '#quote';
+      send.removeAttribute('target');
+      send.className = 'send';
+      send.setAttribute('aria-disabled', 'true');
+      missing.style.display = '';
+    }
+  }
+
+  function toggle(id) {
+    var i = state.sel.indexOf(id);
+    if (i >= 0) state.sel.splice(i, 1); else state.sel.push(id);
+    update();
+  }
+
+  function bind() {
+    document.getElementById('langBtn').addEventListener('click', function () {
+      state.lang = state.lang === 'en' ? 'ar' : 'en';
+      render();
+      window.scrollTo(0, 0);
+    });
+    var fields = { 'q-name': 'name', 'q-phone': 'phone', 'q-email': 'email', 'q-note': 'note' };
+    Object.keys(fields).forEach(function (id) {
+      var el = document.getElementById(id);
+      el.value = state[fields[id]];
+      el.addEventListener('input', function () { state[fields[id]] = el.value; update(); });
+    });
+    var btns = document.querySelectorAll('.addbtn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function (e) { toggle(e.currentTarget.getAttribute('data-id')); });
+    }
+    document.getElementById('qList').addEventListener('click', function (e) {
+      var id = e.target && e.target.getAttribute && e.target.getAttribute('data-remove');
+      if (id) toggle(id);
+    });
+    document.getElementById('send').addEventListener('click', function (e) {
+      if (this.getAttribute('aria-disabled') === 'true') {
+        e.preventDefault();
+        document.getElementById('q-name').focus();
+      }
+    });
+  }
+
+  function render() {
+    var L = T[state.lang];
+    document.documentElement.lang = state.lang;
+    document.documentElement.dir = L.dir;
+    app.innerHTML = tpl(L);
+    bind();
+    update();
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>
