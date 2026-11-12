@@ -180,3 +180,11 @@ h2{font-size:32px}
 .shot img{padding:0}
 
 html[data-theme=dark] body{background:var(--bg) linear-gradient(135deg,#142B5C 0%,#0F2249 55%,#0F2538 100%) fixed}
+
+.sbar{display:none}
+@media (max-width:720px){
+  .sbar{display:flex;position:fixed;inset-inline:0;bottom:0;z-index:45;align-items:center;justify-content:center;min-height:56px;padding:0 16px calc(env(safe-area-inset-bottom,0px));background:var(--green);color:var(--on-green);font-weight:700;font-size:16px;text-decoration:none!important;box-shadow:0 -8px 28px -10px rgba(0,0,0,.45);transform:translateY(110%);transition:transform .25s}
+  body.sbar-on .sbar{transform:none}
+  body.sbar-on .wa{bottom:76px}
+  body.sbar-on footer{padding-bottom:72px}
+}

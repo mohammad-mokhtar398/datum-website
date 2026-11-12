@@ -128,6 +128,13 @@ html[lang=ar] .pkg span.n{font-family:inherit}
 footer{margin-top:0}
 .note{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:-8px 0 22px;padding:12px 16px;border:1px solid var(--green);border-radius:12px;background:color-mix(in srgb,var(--green) 12%,var(--surface));font-size:14.5px}
 .note .na{display:inline-flex;gap:8px;align-items:center}
+.send.alt{min-height:48px;font-size:15px;margin-top:0}
+.send.alt.ready{background:var(--surface2);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.send.alt.ready:hover{border-color:var(--green)}
+.sent{display:flex;flex-direction:column;gap:6px;padding:14px 16px;border:1px solid var(--green);border-radius:12px;background:color-mix(in srgb,var(--green) 12%,var(--surface));font-size:14.5px}
+.sent[hidden]{display:none}
+.sent b{font-size:15.5px}
+.sent a{font-weight:600;text-decoration:underline}
 .chip-btn{font:inherit;font-size:13.5px;font-weight:600;color:var(--ink);background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;min-height:36px;cursor:pointer}
 .chip-btn:hover{border-color:var(--green)}
 .chip-btn.x{padding:0;width:36px;font-size:18px;line-height:1}
@@ -185,6 +192,7 @@ footer{margin-top:0}
       fine: 'WhatsApp opens with your request filled in. Press send there to deliver it to us.',
       rights: 'Datum Technologies. All rights reserved.', waLabel: 'Chat on WhatsApp',
       wHello: 'Hello Datum, I would like a quote.', wName: 'Name', wPhone: 'Phone', wEmail: 'Email', wSystems: 'Systems', wPackage: 'Package',
+      mailBtn: 'Send by email instead', mailSubject: 'Quote request from the Datum website', sentH: 'Almost done', sentP: 'WhatsApp should now be open with your request. Press send there to deliver it to us.', sentAgain: 'Open WhatsApp again',
       share: 'Share', shareText: 'My selection from Datum Technologies:', noteTxt: 'Welcome back. We kept your selection.', noteReset: 'Start over', noteClose: 'Dismiss', wDetails: 'Details', wFrom: 'Sent from the Datum website'
     },
     ar: {
@@ -201,6 +209,7 @@ footer{margin-top:0}
       fine: 'سيفتح واتساب وفيه طلبك مكتوبًا. اضغط إرسال هناك ليصلنا.',
       rights: 'داتوم تكنولوجيز. جميع الحقوق محفوظة.', waLabel: 'تواصل عبر واتساب',
       wHello: 'مرحبًا داتوم، أرغب في الحصول على عرض سعر.', wName: 'الاسم', wPhone: 'الهاتف', wEmail: 'البريد الإلكتروني', wPackage: 'الباقة',
+      mailBtn: 'أو أرسل بالبريد الإلكتروني', mailSubject: 'طلب عرض سعر من موقع داتوم', sentH: 'اقتربت من الانتهاء', sentP: 'يجب أن يكون واتساب مفتوحًا الآن ومعه طلبك. اضغط إرسال هناك ليصلنا.', sentAgain: 'افتح واتساب مرة أخرى',
       share: 'مشاركة', shareText: 'اختياراتي من داتوم تكنولوجيز:', noteTxt: 'أهلًا بعودتك. احتفظنا باختياراتك.', noteReset: 'ابدأ من جديد', noteClose: 'إغلاق', wSystems: 'الأنظمة المطلوبة', wDetails: 'التفاصيل', wFrom: 'أُرسل من موقع داتوم'
     }
   };
@@ -230,7 +239,7 @@ footer{margin-top:0}
   function save() { put('datum-quote', JSON.stringify(sel)); }
   save();
 
-  var lang = q.get('lang') === 'ar' || q.get('lang') === 'en' ? q.get('lang') : (get('datum-lang') === 'ar' ? 'ar' : 'en');
+  var lang = q.get('lang') === 'ar' || q.get('lang') === 'en' ? q.get('lang') : (get('datum-lang') === 'ar' || get('datum-lang') === 'en' ? get('datum-lang') : ((navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en'));
   var theme = get('datum-theme');
   if (theme !== 'light' && theme !== 'dark') theme = 'light';
   var f = { name: '', phone: '', email: '', note: '' };
@@ -272,6 +281,8 @@ footer{margin-top:0}
       '<div class="fld"><label for="q-email">' + esc(L.lblEmail) + '</label><div class="inp"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><input id="q-email" type="email" dir="ltr" autocomplete="email" placeholder="name@company.com"></div></div>' +
       '<div class="fld"><label for="q-note">' + esc(L.lblNote) + '</label><div class="inp ta"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><textarea id="q-note" rows="3"></textarea></div></div>' +
       '<a id="send" class="send" href="#" aria-disabled="true">' + WAI + esc(L.send) + '</a>' +
+      '<a id="mail" class="send alt" href="#" aria-disabled="true">' + esc(L.mailBtn) + '</a>' +
+      '<div class="sent" id="sent" hidden><b>' + esc(L.sentH) + '</b><span>' + esc(L.sentP) + '</span><a id="sentAgain" href="#" target="_blank" rel="noopener">' + esc(L.sentAgain) + '</a></div>' +
       '<p class="hint" id="missing">' + esc(L.missing) + '</p>' +
       '<ul class="trust"><li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>' + esc(L.t1) + '</li><li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>' + esc(L.t2) + '</li><li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>' + esc(L.t3) + '</li></ul></div></div></div></div></div></div>' +
       '<footer><div class="wrap"><span>' + esc(L.rights) + '</span><span><a href="index.html">datum.qa</a></span></div></footer>' +
@@ -284,6 +295,12 @@ footer{margin-top:0}
   function shareLink(title, text, url) {
     if (navigator.share) { navigator.share({ title: title, text: text, url: url }).catch(function () {}); return; }
     window.open('https://wa.me/?text=' + encodeURIComponent(text + '\n' + url), '_blank', 'noopener');
+  }
+
+  function showSent() {
+    var el = document.getElementById('sent');
+    el.hidden = false;
+    el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
 
   function toggle(id) {
@@ -312,6 +329,8 @@ footer{margin-top:0}
     var can = ordered.length > 0 && f.name.trim() !== '' && phoneOk;
     var send = document.getElementById('send');
     var miss = document.getElementById('missing');
+    var mail = document.getElementById('mail');
+    document.getElementById('sent').hidden = true;
     if (can) {
       var lines = [L.wHello, '', L.wName + ': ' + f.name.trim(), L.wPhone + ': ' + f.phone.trim()];
       if (f.email.trim()) lines.push(L.wEmail + ': ' + f.email.trim());
@@ -321,7 +340,12 @@ footer{margin-top:0}
       ordered.forEach(function (id) { lines.push('- ' + N[lang][id][0]); });
       if (f.note.trim()) lines.push(L.wDetails + ': ' + f.note.trim());
       lines.push('', L.wFrom);
-      send.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(lines.join('\n'));
+      var waUrl = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(lines.join('\n'));
+      mail.href = 'mailto:info@datum.qa?subject=' + encodeURIComponent(L.mailSubject) + '&body=' + encodeURIComponent(lines.join('\n'));
+      mail.className = 'send alt ready';
+      mail.setAttribute('aria-disabled', 'false');
+      document.getElementById('sentAgain').href = waUrl;
+      send.href = waUrl;
       send.target = '_blank';
       send.rel = 'noopener';
       send.className = 'send ready';
@@ -329,6 +353,9 @@ footer{margin-top:0}
       miss.className = 'hint';
     } else {
       send.href = '#';
+      mail.href = '#';
+      mail.className = 'send alt';
+      mail.setAttribute('aria-disabled', 'true');
       send.removeAttribute('target');
       send.className = 'send';
       send.setAttribute('aria-disabled', 'true');
@@ -378,7 +405,12 @@ footer{margin-top:0}
       el.value = f[map[id]];
       el.addEventListener('input', function () { f[map[id]] = el.value; update(); });
     });
+    document.getElementById('mail').addEventListener('click', function (e) {
+      if (this.getAttribute('aria-disabled') === 'true') { e.preventDefault(); document.getElementById('send').click(); return; }
+      showSent();
+    });
     document.getElementById('send').addEventListener('click', function (e) {
+      if (this.getAttribute('aria-disabled') !== 'true') showSent();
       if (this.getAttribute('aria-disabled') === 'true') {
         e.preventDefault();
         document.getElementById('missing').className = 'hint on';
