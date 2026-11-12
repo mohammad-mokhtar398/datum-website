@@ -1,120 +1,183 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Datum Technologies</title>
+<title>Datum Technologies | IT, Networking and Smart Homes in Qatar</title>
+<meta name="description" content="Datum Technologies designs, supplies, installs and supports Wi-Fi, networks, CCTV, door stations, IP telephony, home automation and NAS in Qatar.">
+<link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
 <style>
-:root{--bg:#F3F6F4;--ink:#10201A;--ink2:#2F4A3E;--ink3:#3D5A4D;--line:#D6E1DB;--line2:#C5D4CB;--green:#1B7352;--accent:#45BC89;--mint:#9CC4B2;--pale:#CFE3D8;color-scheme:light}
+:root{--blue:#2656A8;--green:#60BA48;--on-green:#08130A;color-scheme:dark}
+html[data-theme=dark]{--bg:#0A1220;--bg2:#0E1830;--surface:#111C32;--surface2:#16233D;--line:#223152;--ink:#E8EEF8;--ink2:#A9B7CC;--ink3:#8D9DB6;--link:#7FB0FF;--accent:#60BA48;--glow:rgba(96,186,72,.18);--glow2:rgba(38,86,168,.45);color-scheme:dark}
+html[data-theme=light]{--bg:#F5F8FC;--bg2:#EAF0F8;--surface:#FFFFFF;--surface2:#F0F5FB;--line:#D3DEEC;--ink:#0E1B33;--ink2:#41526C;--ink3:#566783;--link:#1F4C99;--accent:#2E7D1F;--glow:rgba(96,186,72,.22);--glow2:rgba(38,86,168,.18);color-scheme:light}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55}
-html[lang=ar] body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;font-size:17px;line-height:1.7}
-a{color:var(--green);text-decoration:none}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;transition:background .3s,color .3s}
+html[lang=ar] body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;font-size:17px;line-height:1.75}
+a{color:var(--link);text-decoration:none}
 a:hover{text-decoration:underline}
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #1B7352;outline-offset:2px}
-.wrap{max-width:1360px;margin:0 auto;padding:0 40px}
-.row{display:flex;flex-wrap:wrap;gap:12px 24px}
-.between{justify-content:space-between}
-.disp{font-family:'Space Grotesk',sans-serif}
-html[lang=ar] .disp{font-family:'IBM Plex Sans Arabic',sans-serif}
-html[lang=en] .disp{letter-spacing:-0.02em}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.disp,h1,h2,h3{font-family:'Space Grotesk',sans-serif}
+html[lang=ar] .disp,html[lang=ar] h1,html[lang=ar] h2,html[lang=ar] h3{font-family:'IBM Plex Sans Arabic',sans-serif}
 .mono{font-family:'JetBrains Mono',monospace}
-.top{background:var(--ink);color:var(--pale);font-size:14px;padding:10px 0}
-.top a,.top button{color:var(--pale)}
-.lang{font:inherit;background:transparent;border:0;padding:0;cursor:pointer;text-decoration:underline}
-.nav{border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding-top:20px;padding-bottom:20px}
-.brand{display:flex;align-items:baseline;gap:8px;color:var(--ink)}
-.brand b{font-family:'Space Grotesk',sans-serif;font-size:26px;letter-spacing:-0.02em}
-.brand span{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
-.links{display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px;font-weight:500}
-.links a{color:var(--ink)}
-.pill{border:1px solid var(--ink);border-radius:8px;padding:8px 16px}
-.hero{display:flex;flex-wrap:wrap;align-items:center;gap:48px;padding-top:88px;padding-bottom:96px}
-.hero>div{flex:1 1 480px;min-width:0}
-.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);font-weight:500}
-html[lang=ar] .eyebrow{font-size:15px;letter-spacing:0;text-transform:none;font-weight:600}
-h1{margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:64px;line-height:1.04;letter-spacing:-0.03em;text-wrap:balance}
-html[lang=ar] h1{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:56px;line-height:1.25;letter-spacing:0}
-h2{margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:40px;line-height:1.1;letter-spacing:-0.02em;text-wrap:balance}
-html[lang=ar] h2{font-family:'IBM Plex Sans Arabic',sans-serif;line-height:1.3;letter-spacing:0}
-.lead{margin:0;font-size:19px;max-width:540px;color:var(--ink2)}
+h1{margin:0;font-weight:700;font-size:68px;line-height:1.03;letter-spacing:-.035em;text-wrap:balance}
+h2{margin:0;font-weight:700;font-size:42px;line-height:1.1;letter-spacing:-.025em;text-wrap:balance}
+html[lang=ar] h1{font-size:58px;line-height:1.25;letter-spacing:0}
+html[lang=ar] h2{line-height:1.3;letter-spacing:0}
+.grad{background:linear-gradient(100deg,var(--green),#4FA3FF 75%);-webkit-background-clip:text;background-clip:text;color:transparent}
+html[data-theme=light] .grad{background:linear-gradient(100deg,#2E7D1F,#2656A8 75%);-webkit-background-clip:text;background-clip:text}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--green)}
+html[lang=ar] .eyebrow{font-family:inherit;font-size:15px;letter-spacing:0;text-transform:none;font-weight:600}
+.lead{font-size:19px;color:var(--ink2);max-width:560px;margin:0}
+/* header */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none!important}
+.brand .lg{width:42px;height:42px;border-radius:11px;background:#fff;display:grid;place-items:center;flex:none}
+.brand .lg img{width:26px;height:auto;display:block}
+.brand b{font-family:'Space Grotesk',sans-serif;font-size:22px;letter-spacing:-.02em;line-height:1}
+.brand small{display:block;font-family:'Space Grotesk',sans-serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-top:3px}
+nav{display:flex;align-items:center;gap:6px}
+nav a.l{color:var(--ink2);font-weight:500;font-size:15px;padding:10px 14px;border-radius:8px}
+nav a.l:hover{color:var(--ink);background:var(--surface);text-decoration:none}
+.tools{display:flex;align-items:center;gap:8px}
+.ib{font:inherit;font-size:14px;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;min-height:44px;min-width:44px;padding:0 14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.ib:hover{border-color:var(--green)}
+.ib svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+html[data-theme=dark] .ic-moon{display:none}
+html[data-theme=light] .ic-sun{display:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:600;font-size:16px;min-height:50px;padding:0 26px;border-radius:12px;border:1.5px solid var(--line);color:var(--ink);background:transparent;cursor:pointer;text-decoration:none!important;transition:transform .2s,border-color .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--green)}
+.btn.fill{background:var(--green);border-color:var(--green);color:var(--on-green);box-shadow:0 8px 28px -8px rgba(96,186,72,.55)}
+.btn.sm{min-height:44px;padding:0 18px;font-size:15px}
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 55% at 78% 30%,var(--glow2),transparent 70%),radial-gradient(40% 40% at 10% 90%,var(--glow),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.35;-webkit-mask-image:radial-gradient(70% 70% at 60% 40%,#000,transparent);mask-image:radial-gradient(70% 70% at 60% 40%,#000,transparent);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;gap:48px;padding-top:88px;padding-bottom:88px}
+.hero .wrap>div{flex:1 1 460px;min-width:0}
 .stack{display:flex;flex-direction:column;gap:28px}
-.btn{display:inline-block;font:inherit;font-weight:600;padding:14px 24px;border-radius:8px;text-decoration:none!important;border:1.5px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer}
-.btn.fill{background:var(--accent);border-color:var(--accent);color:#0B1F17}
-.face{background:var(--ink);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:20px;direction:ltr}
-.face .cap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mint)}
-.ports{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:8px}
-.port{aspect-ratio:1/1.05;background:#0A1511;border:1px solid #27443A;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:5px 0 4px}
-.port i{display:block;width:7px;height:7px;border-radius:50%}
-.port u{display:block;width:62%;height:38%;background:#1D3329;border-radius:2px}
-.up{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #27443A;padding-top:16px}
-.up div{display:flex;gap:8px}
-.up em{display:block;width:44px;height:24px;background:#0A1511;border:1px solid #27443A;border-radius:3px}
-.band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.sec{padding-top:88px;padding-bottom:88px;display:flex;flex-direction:column;gap:40px}
-.cards{display:flex;flex-wrap:wrap;gap:16px}
-.card{flex:1 1 280px;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:8px}
-.card .n{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px}
-html[lang=ar] .card .n{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:22px}
-.card .l{color:var(--ink2);font-size:15px}
-.card .b{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.topo{width:100%;height:auto;display:block;direction:ltr}
+.topo .ln{stroke:var(--green);stroke-width:1.6;fill:none;stroke-dasharray:5 7;opacity:.75;animation:flow 1.6s linear infinite}
+.topo .core{fill:var(--surface);stroke:var(--green);stroke-width:2}
+.topo .nd{fill:var(--surface2);stroke:var(--line);stroke-width:1.5}
+.topo .pulse{fill:none;stroke:var(--green);stroke-width:1.5;transform-origin:240px 200px;animation:pulse 3s ease-out infinite}
+.topo text{font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--ink2);text-anchor:middle}
+.topo .dot{fill:var(--green)}
+@keyframes flow{to{stroke-dashoffset:-24}}
+@keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.1);opacity:0}}
+/* facts strip */
+.facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.facts .wrap{display:flex;flex-wrap:wrap}
+.fact{flex:1 1 200px;padding:26px 24px;border-inline-start:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.fact:first-child{border-inline-start:0;padding-inline-start:0}
+.fact b{font-family:'Space Grotesk',sans-serif;font-size:34px;line-height:1.1;letter-spacing:-.02em}
+html[lang=ar] .fact b{font-family:'IBM Plex Sans Arabic',sans-serif}
+.fact span{color:var(--ink2);font-size:14.5px}
+/* sections */
+.sec{padding:104px 0}
+.sec.alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.head{display:flex;flex-direction:column;gap:16px;max-width:680px;margin-bottom:48px}
+.head p{margin:0;color:var(--ink2);font-size:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:10px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 18px 40px -22px var(--green)}
+.card .ico{width:50px;height:50px;border-radius:13px;background:linear-gradient(140deg,var(--blue),#1B3F80);display:grid;place-items:center;margin-bottom:6px}
+.card .ico svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{margin:0;font-size:21px;font-weight:600}
+.card .d{color:var(--ink2);font-size:15px;flex:1}
+.card .b{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent)}
 html[lang=ar] .card .b{font-family:inherit;font-size:14px;font-weight:600}
-.addbtn{margin-top:8px;align-self:flex-start;font:inherit;font-weight:600;font-size:14px;padding:10px 16px;min-height:44px;border-radius:8px;cursor:pointer;background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
-.addbtn.on{background:var(--ink);color:#fff}
-.two{display:flex;flex-wrap:wrap;gap:48px}
-.two>div{min-width:0}
-.svc{display:flex;flex-wrap:wrap;gap:8px 32px;padding:24px 0;border-top:1px solid var(--line2)}
-.svc .a{flex:1 1 220px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px}
-html[lang=ar] .svc .a{font-family:'IBM Plex Sans Arabic',sans-serif}
-.svc .c{flex:2 1 320px;min-width:0;color:var(--ink2)}
-.tile{flex:1 1 220px;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:16px}
-.tile .k{background:var(--ink);border-radius:6px;min-height:88px;padding:12px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;font-weight:500;color:var(--mint)}
-.tile .nm{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;line-height:1.25}
-.tile .sp{font-size:14px;color:var(--ink3)}
-.brands{display:flex;flex-wrap:wrap;gap:16px 56px;align-items:baseline}
-.brands a{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:-0.02em;color:var(--ink)}
-.q-list{display:flex;flex-direction:column;border-top:1px solid var(--line2)}
-.q-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line2)}
-.q-item b{font-weight:600;font-size:19px}
-.q-item button{font:inherit;font-size:14px;font-weight:600;color:var(--green);background:transparent;border:0;padding:10px 4px;min-height:44px;cursor:pointer}
-.q-empty{margin:0;padding:18px 0;color:var(--ink3);border-bottom:1px solid var(--line2)}
-.form{background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:18px}
+.addbtn{margin-top:10px;align-self:flex-start;font:inherit;font-weight:600;font-size:14px;min-height:44px;padding:0 18px;border-radius:10px;cursor:pointer;background:transparent;color:var(--ink);border:1.5px solid var(--line);transition:all .2s}
+.addbtn:hover{border-color:var(--green)}
+.addbtn.on{background:var(--green);border-color:var(--green);color:var(--on-green)}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
+.step{padding:32px 28px;display:flex;flex-direction:column;gap:12px;border-inline-end:1px solid var(--line)}
+.step:last-child{border-inline-end:0}
+.step .no{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.08em}
+.step h3{margin:0;font-size:22px;font-weight:600}
+.step p{margin:0;color:var(--ink2);font-size:15px}
+/* portfolio */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.shot{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,#142447,#0C1730);display:flex;align-items:flex-end}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.shot:hover img{transform:scale(1.05)}
+.shot .art{position:absolute;inset:0;opacity:.55;background-image:linear-gradient(rgba(96,186,72,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(96,186,72,.25) 1px,transparent 1px);background-size:32px 32px;-webkit-mask-image:radial-gradient(80% 80% at 70% 30%,#000,transparent);mask-image:radial-gradient(80% 80% at 70% 30%,#000,transparent)}
+.shot .cap{position:relative;width:100%;padding:44px 20px 18px;background:linear-gradient(transparent,rgba(5,10,20,.9));color:#fff;display:flex;flex-direction:column;gap:2px}
+.shot .cap b{font-family:'Space Grotesk',sans-serif;font-size:19px}
+html[lang=ar] .shot .cap b{font-family:'IBM Plex Sans Arabic',sans-serif}
+.shot .cap span{font-size:13.5px;color:#B7C5DA}
+/* brands */
+.brands{display:flex;flex-wrap:wrap;gap:14px}
+.brand-pill{flex:1 1 220px;display:flex;align-items:center;justify-content:center;min-height:96px;border:1px solid var(--line);border-radius:16px;background:var(--surface);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:30px;letter-spacing:-.02em;color:var(--ink);transition:all .25s;text-decoration:none!important}
+.brand-pill:hover{border-color:var(--green);transform:translateY(-3px)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:40px}
+.tile{padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--surface);display:flex;flex-direction:column;gap:6px}
+.tile b{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600}
+html[lang=ar] .tile b{font-family:'IBM Plex Sans Arabic',sans-serif}
+.tile .br{font-size:13px;color:var(--accent);font-weight:600}
+.tile span{font-size:14px;color:var(--ink3)}
+/* testimonials */
+.tm{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.tm figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.tm blockquote{margin:0;font-size:17px;color:var(--ink)}
+.tm figcaption{color:var(--ink2);font-size:14.5px}
+.tm figcaption b{display:block;color:var(--ink);font-size:16px}
+/* quote */
+.quote{display:flex;flex-wrap:wrap;gap:48px}
+.quote>div{min-width:0}
+.q-list{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:8px}
+.q-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.q-item b{font-weight:600;font-size:18px}
+.q-item button{font:inherit;font-size:14px;font-weight:600;color:var(--link);background:transparent;border:0;padding:10px 4px;min-height:44px;cursor:pointer}
+.q-empty{margin:0;padding:18px 0;color:var(--ink3);border-bottom:1px solid var(--line)}
+.form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:18px}
 .fld{display:flex;flex-direction:column;gap:6px}
 .fld label{font-weight:600;font-size:14px}
-.fld input,.fld textarea{font:inherit;padding:12px 14px;border:1.5px solid #8FA79A;border-radius:8px;background:#fff;color:var(--ink);width:100%}
+.fld input,.fld textarea{font:inherit;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);width:100%}
+.fld input:focus,.fld textarea:focus{border-color:var(--green)}
 html[dir=rtl] input[dir=ltr]{text-align:right}
-.send{display:block;text-align:center;font-weight:600;padding:14px 24px;border-radius:8px;text-decoration:none!important;background:#D6E1DB;color:var(--ink3)}
-.send.ready{background:var(--accent);color:#0B1F17}
+.send{display:flex;align-items:center;justify-content:center;min-height:52px;font-weight:600;border-radius:12px;text-decoration:none!important;background:var(--surface2);color:var(--ink3);border:1px solid var(--line)}
+.send.ready{background:var(--green);border-color:var(--green);color:var(--on-green);box-shadow:0 8px 28px -8px rgba(96,186,72,.55)}
 .small{font-size:14px;color:var(--ink3)}
-.contact{background:var(--ink);color:#fff;border-radius:16px;padding:64px;display:flex;flex-wrap:wrap;gap:48px;margin-bottom:88px}
-.contact>div{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:24px}
-.contact h2{font-size:44px}
-.contact p{margin:0;color:var(--pale);font-size:18px;max-width:460px}
-.contact .lb{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mint)}
+/* contact */
+.contact{position:relative;overflow:hidden;border-radius:24px;padding:64px;display:flex;flex-wrap:wrap;gap:48px;background:linear-gradient(135deg,#17306A,#0B1A3A 60%,#0F2A33);color:#fff;border:1px solid #27407A}
+.contact>div{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:24px;position:relative}
+.contact h2{font-size:46px}
+.contact p{margin:0;color:#C5D3E8;font-size:18px;max-width:460px}
+.contact .lb{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8FD07A}
 html[lang=ar] .contact .lb{font-family:inherit;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none}
-.contact .v{font-size:18px}
 .contact .g{display:flex;flex-direction:column;gap:4px}
-.contact a.l{color:var(--accent)}
-.foot{border-top:1px solid var(--line);font-size:14px;color:var(--ink3)}
-.foot .wrap{padding-top:28px;padding-bottom:28px}
-.foot a{color:var(--ink3)}
+.contact .v{font-size:18px}
+.contact a.l{color:#8FD07A}
+footer{border-top:1px solid var(--line);color:var(--ink3);font-size:14px;margin-top:104px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;padding-top:28px;padding-bottom:28px}
+footer a{color:var(--ink3)}
+.wa{position:fixed;inset-inline-end:20px;bottom:20px;z-index:40;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(0,0,0,.5);transition:transform .2s}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:30px;height:30px;fill:#fff}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+@media (max-width:900px){nav a.l{display:none}.sec{padding:72px 0}}
 @media (max-width:720px){
 .wrap{padding:0 16px}
-h1{font-size:40px}html[lang=ar] h1{font-size:36px}
+h1{font-size:42px}html[lang=ar] h1{font-size:36px}
 h2{font-size:32px}
-.hero{padding-top:48px;padding-bottom:56px;gap:32px}
-.sec{padding-top:56px;padding-bottom:56px}
-.contact{padding:32px 20px;gap:32px;margin-bottom:56px}
-.contact h2{font-size:34px}
+.hero .wrap{padding-top:48px;padding-bottom:56px;gap:32px}
+.contact{padding:32px 20px;gap:32px}.contact h2{font-size:34px}
 .form{padding:20px}
-.face{padding:16px}
-.ports{gap:5px}
-.brands a{font-size:28px}
+.fact{flex:1 1 45%;border-inline-start:0;padding:18px 0}
+.step{border-inline-end:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
+.brand small{display:none}
+.tools .btn{display:none}
 }
 </style>
 </head>
@@ -127,16 +190,33 @@ h2{font-size:32px}
   var MAP = 'https://maps.app.goo.gl/qoNauScXGs4P1Act8';
   var IDS = ['wifi', 'network', 'cctv', 'door', 'phone', 'home', 'nas', 'car'];
 
+  /* Add real photos here: {img:'assets/projects/name.jpg', sys:0..7, en:'Title', ar:'العنوان'} */
+  var PROJECTS = [];
+  /* Add real, approved customer quotes here: {en:{q:'..',n:'Name',r:'Company'}, ar:{q:'..',n:'..',r:'..'}} */
+  var TESTIMONIALS = [];
+
+  var ICONS = {
+    wifi: 'M2 9a15 15 0 0 1 20 0 M5.5 12.5a10 10 0 0 1 13 0 M9 16a5 5 0 0 1 6 0 M12 19.5h.01',
+    network: 'M9 3h6v5H9z M3 16h6v5H3z M15 16h6v5h-6z M12 8v4 M6 16v-4h12v4',
+    cctv: 'M3 7l12-3 2 7-12 3z M17 8l4-1v5l-3 .8 M9 15v4 M6 19h6',
+    door: 'M6 3h12v18H6z M14.5 12h.01 M9 8h3 M9 16h3',
+    phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z',
+    home: 'M3 11l9-8 9 8 M5 10v10h14V10 M10 20v-6h4v6',
+    nas: 'M4 5h16v5H4z M4 14h16v5H4z M7.5 7.5h.01 M7.5 16.5h.01',
+    car: 'M5 16l1.5-5a2 2 0 0 1 1.9-1.4h7.2a2 2 0 0 1 1.9 1.4L19 16 M3 16h18v3H3z M7 19v1.5 M17 19v1.5 M7.5 17.5h.01 M16.5 17.5h.01'
+  };
+  function svg(id) { return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + ICONS[id] + '"/></svg>'; }
+
   var T = {
     en: {
       dir: 'ltr', other: 'العربية',
-      hours: 'Open Saturday to Thursday, 9 AM to 6 PM',
-      navSystems: 'Systems', navServices: 'Services', navBrands: 'Brands', navContact: 'Contact', navQuote: 'Quote request',
+      short: ['Wi-Fi', 'Network', 'CCTV', 'Door', 'IP phone', 'Smart home', 'NAS', 'Tracking'],
+      navSystems: 'Systems', navServices: 'Services', navWork: 'Work', navBrands: 'Brands', navContact: 'Contact', navQuote: 'Get a quote',
       eyebrow: 'IT, networking and smart homes in Qatar',
-      h1: 'Networks that work, in homes and businesses.',
+      h1a: 'Networks that work,', h1b: 'in homes and businesses.',
       lead: 'From Wi-Fi and cabling to CCTV and home automation, we design, supply, install and support the systems your connection depends on.',
-      btnSystems: 'See our systems', btnContact: 'Contact us', btnWa: 'WhatsApp us',
-      faceA: '24-port PoE switch', faceB: 'Link up', faceC: '4 x 10G uplink',
+      btnSystems: 'See our systems', btnWa: 'WhatsApp us',
+      f1: ['8', 'Systems we install'], f2: ['4', 'Brands we supply'], f3: ['1', 'Team, design to support'], f4: ['Doha', 'Serving Qatar'],
       sysH: 'Systems we install', sysP: 'Eight systems, one team. Add the ones you need to your quote request.',
       add: 'Add to quote', added: 'Added · Remove',
       sys: [
@@ -149,15 +229,7 @@ h2{font-size:32px}
         ['Network-attached storage', 'Shared storage and backups on your own network.', 'Synology'],
         ['Car tracking', 'Know where your vehicles are.', '']
       ],
-      quoteH: 'Your quote request',
-      quoteP: 'Add the systems you need above, enter your details, and send the request to us on WhatsApp.',
-      none: 'No systems selected yet. Use Add to quote on the systems above.',
-      remove: 'Remove',
-      lblName: 'Name', lblPhone: 'Phone number', lblEmail: 'Email (optional)', lblNote: 'Project details (optional)',
-      send: 'Send on WhatsApp',
-      missing: 'To send, choose at least one system and enter your name and phone number.',
-      waNote: 'WhatsApp opens with your request filled in. Press send there to deliver it to us.',
-      servH: 'From the first drawing to the annual service.',
+      servEy: 'How we work', servH: 'From the first drawing to the annual service.',
       servP: 'We support businesses and homes with the latest technology, and we stay after the install.',
       services: [
         ['Design and configuration', 'Design and configuration to meet the connectivity you need.'],
@@ -165,7 +237,8 @@ h2{font-size:32px}
         ['Supply and installation', 'Supply and installation of the latest equipment and components.'],
         ['Support', 'After-sale support and an annual maintenance contract.']
       ],
-      supplyH: 'What we supply and install',
+      workEy: 'Our work', workH: 'Installations we deliver', workP: 'A look at the kind of systems we put in. Project photos are being added.', soon: 'Photos coming soon',
+      supplyEy: 'Supply', supplyH: 'What we supply and install',
       supply: [
         ['Access points and switches', 'UniFi', 'Wi-Fi and network switching'],
         ['Camera systems', 'UniFi and Hikvision', 'CCTV for homes and businesses'],
@@ -174,6 +247,15 @@ h2{font-size:32px}
         ['Network storage', 'Synology', 'NAS stations and hard drives']
       ],
       brandsLabel: 'Brands we supply',
+      tmEy: 'Clients', tmH: 'What our clients say',
+      quoteEy: 'Quote', quoteH: 'Your quote request',
+      quoteP: 'Add the systems you need above, enter your details, and send the request to us on WhatsApp.',
+      none: 'No systems selected yet. Use Add to quote on the systems above.',
+      remove: 'Remove',
+      lblName: 'Name', lblPhone: 'Phone number', lblEmail: 'Email (optional)', lblNote: 'Project details (optional)',
+      send: 'Send on WhatsApp',
+      missing: 'To send, choose at least one system and enter your name and phone number.',
+      waNote: 'WhatsApp opens with your request filled in. Press send there to deliver it to us.',
       contactH: 'We are open for partnership.',
       contactP: 'Have a project for us? Get in touch and tell us what you need connected.',
       contactBtn: 'Request a quote on WhatsApp',
@@ -181,18 +263,19 @@ h2{font-size:32px}
       address: 'Zone 32, Street 370, Building 382, Unit 0, Doha, Qatar', map: 'View on map',
       hoursLong: 'Saturday to Thursday, 9 AM to 6 PM',
       rights: 'Datum Technologies. All rights reserved.',
+      theme: 'Switch between dark and light mode', waLabel: 'Chat on WhatsApp',
       wHello: 'Hello Datum, I would like a quote.', wName: 'Name', wPhone: 'Phone', wEmail: 'Email', wSystems: 'Systems', wDetails: 'Details', wFrom: 'Sent from the Datum website',
       wGeneric: 'Hello Datum, I would like a quote'
     },
     ar: {
       dir: 'rtl', other: 'English',
-      hours: 'مفتوح من السبت إلى الخميس، 9 صباحًا حتى 6 مساءً',
-      navSystems: 'الأنظمة', navServices: 'الخدمات', navBrands: 'العلامات التجارية', navContact: 'تواصل معنا', navQuote: 'طلب عرض سعر',
+      short: ['الواي فاي', 'الشبكات', 'الكاميرات', 'الباب', 'هاتف IP', 'المنزل الذكي', 'NAS', 'التتبع'],
+      navSystems: 'الأنظمة', navServices: 'الخدمات', navWork: 'أعمالنا', navBrands: 'العلامات التجارية', navContact: 'تواصل معنا', navQuote: 'اطلب عرض سعر',
       eyebrow: 'تقنية المعلومات والشبكات والمنازل الذكية في قطر',
-      h1: 'شبكات تعمل بكفاءة، في المنازل والشركات.',
+      h1a: 'شبكات تعمل بكفاءة،', h1b: 'في المنازل والشركات.',
       lead: 'من الواي فاي والكابلات إلى الكاميرات وأتمتة المنازل، نصمم ونورّد ونركّب وندعم الأنظمة التي يعتمد عليها اتصالك.',
-      btnSystems: 'اطلع على أنظمتنا', btnContact: 'تواصل معنا', btnWa: 'واتساب',
-      faceA: '24-port PoE switch', faceB: 'Link up', faceC: '4 x 10G uplink',
+      btnSystems: 'اطلع على أنظمتنا', btnWa: 'واتساب',
+      f1: ['8', 'أنظمة نركّبها'], f2: ['4', 'علامات تجارية نوفرها'], f3: ['1', 'فريق من التصميم إلى الدعم'], f4: ['الدوحة', 'نخدم قطر'],
       sysH: 'الأنظمة التي نركّبها', sysP: 'ثمانية أنظمة وفريق واحد. أضف ما تحتاجه إلى طلب عرض السعر.',
       add: 'أضف إلى الطلب', added: 'تمت الإضافة · إزالة',
       sys: [
@@ -205,15 +288,7 @@ h2{font-size:32px}
         ['التخزين الشبكي (NAS)', 'تخزين مشترك ونسخ احتياطي على شبكتك الخاصة.', 'Synology'],
         ['تتبع السيارات', 'اعرف أين مركباتك.', '']
       ],
-      quoteH: 'طلب عرض السعر',
-      quoteP: 'أضف الأنظمة التي تحتاجها من القائمة أعلاه، واكتب بياناتك، ثم أرسل الطلب إلينا عبر واتساب.',
-      none: 'لم تختر أي نظام بعد. استخدم زر أضف إلى الطلب في الأنظمة أعلاه.',
-      remove: 'إزالة',
-      lblName: 'الاسم', lblPhone: 'رقم الهاتف', lblEmail: 'البريد الإلكتروني (اختياري)', lblNote: 'تفاصيل المشروع (اختياري)',
-      send: 'إرسال عبر واتساب',
-      missing: 'للإرسال، اختر نظامًا واحدًا على الأقل واكتب اسمك ورقم هاتفك.',
-      waNote: 'سيفتح واتساب وفيه طلبك مكتوبًا. اضغط إرسال هناك ليصلنا.',
-      servH: 'من أول مخطط إلى الصيانة السنوية.',
+      servEy: 'كيف نعمل', servH: 'من أول مخطط إلى الصيانة السنوية.',
       servP: 'ندعم الشركات والمنازل بأحدث التقنيات، ونبقى معك بعد التركيب.',
       services: [
         ['التصميم والإعداد', 'تصميم وإعداد الشبكة بما يحقق الاتصال الذي تحتاجه.'],
@@ -221,7 +296,8 @@ h2{font-size:32px}
         ['التوريد والتركيب', 'توريد وتركيب أحدث المعدات والمكونات.'],
         ['الدعم', 'دعم بعد البيع وعقد صيانة سنوي.']
       ],
-      supplyH: 'ما نوفره ونركّبه',
+      workEy: 'أعمالنا', workH: 'تركيبات ننفذها', workP: 'نظرة على أنواع الأنظمة التي نركّبها. نضيف صور المشاريع قريبًا.', soon: 'الصور قريبًا',
+      supplyEy: 'التوريد', supplyH: 'ما نوفره ونركّبه',
       supply: [
         ['نقاط الوصول والسويتشات', 'UniFi', 'واي فاي وتبديل الشبكة'],
         ['أنظمة الكاميرات', 'UniFi + Hikvision', 'مراقبة للمنازل والشركات'],
@@ -230,6 +306,15 @@ h2{font-size:32px}
         ['التخزين الشبكي', 'Synology', 'أجهزة NAS وأقراص تخزين']
       ],
       brandsLabel: 'العلامات التجارية التي نوفرها',
+      tmEy: 'العملاء', tmH: 'ماذا يقول عملاؤنا',
+      quoteEy: 'عرض سعر', quoteH: 'طلب عرض السعر',
+      quoteP: 'أضف الأنظمة التي تحتاجها من القائمة أعلاه، واكتب بياناتك، ثم أرسل الطلب إلينا عبر واتساب.',
+      none: 'لم تختر أي نظام بعد. استخدم زر أضف إلى الطلب في الأنظمة أعلاه.',
+      remove: 'إزالة',
+      lblName: 'الاسم', lblPhone: 'رقم الهاتف', lblEmail: 'البريد الإلكتروني (اختياري)', lblNote: 'تفاصيل المشروع (اختياري)',
+      send: 'إرسال عبر واتساب',
+      missing: 'للإرسال، اختر نظامًا واحدًا على الأقل واكتب اسمك ورقم هاتفك.',
+      waNote: 'سيفتح واتساب وفيه طلبك مكتوبًا. اضغط إرسال هناك ليصلنا.',
       contactH: 'نرحب بالشراكة.',
       contactP: 'لديك مشروع؟ تواصل معنا وأخبرنا ما الذي تريد ربطه.',
       contactBtn: 'اطلب عرض سعر عبر واتساب',
@@ -237,89 +322,108 @@ h2{font-size:32px}
       address: 'المنطقة 32، شارع 370، مبنى 382، وحدة 0، الدوحة، قطر', map: 'عرض على الخريطة',
       hoursLong: 'من السبت إلى الخميس، 9 صباحًا حتى 6 مساءً',
       rights: 'داتوم تكنولوجيز. جميع الحقوق محفوظة.',
+      theme: 'التبديل بين الوضع الداكن والفاتح', waLabel: 'تواصل عبر واتساب',
       wHello: 'مرحبًا داتوم، أرغب في الحصول على عرض سعر.', wName: 'الاسم', wPhone: 'الهاتف', wEmail: 'البريد الإلكتروني', wSystems: 'الأنظمة المطلوبة', wDetails: 'التفاصيل', wFrom: 'أُرسل من موقع داتوم',
       wGeneric: 'مرحبًا داتوم، أرغب في الحصول على عرض سعر'
     }
   };
 
-  var LIT = [0, 1, 2, 4, 5, 7, 8, 11, 12, 13, 15, 18, 19, 21];
-  var state = { lang: 'en', sel: [], name: '', phone: '', email: '', note: '' };
+  function readTheme() {
+    try { var s = localStorage.getItem('datum-theme'); if (s === 'light' || s === 'dark') return s; } catch (e) {}
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+  var state = { lang: 'en', theme: readTheme(), sel: [], name: '', phone: '', email: '', note: '' };
   var app = document.getElementById('app');
 
-  function esc(s) {
-    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function waLink(text) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text); }
 
+  function topology(L) {
+    var pts = [[240, 52, 0], [388, 112, 2], [412, 232, 6], [330, 340, 4], [150, 340, 3], [68, 232, 5], [92, 112, 1]];
+    var lines = '', nodes = '';
+    pts.forEach(function (p) {
+      lines += '<line class="ln" x1="240" y1="200" x2="' + p[0] + '" y2="' + p[1] + '"/>';
+      nodes += '<g><circle class="nd" cx="' + p[0] + '" cy="' + p[1] + '" r="26"/><circle class="dot" cx="' + p[0] + '" cy="' + p[1] + '" r="4"/>' +
+        '<text x="' + p[0] + '" y="' + (p[1] + (p[1] > 200 ? 46 : -36)) + '">' + esc(L.short[p[2]]) + '</text></g>';
+    });
+    return '<svg class="topo" viewBox="0 0 480 400" role="img" aria-label="Network diagram"><circle class="pulse" cx="240" cy="200" r="40"/>' +
+      lines + '<circle class="core" cx="240" cy="200" r="40"/><path d="M222 200h36M240 182v36" stroke="#60BA48" stroke-width="2.4" stroke-linecap="round"/>' + nodes + '</svg>';
+  }
+
   function tpl(L) {
-    var ports = '';
-    for (var i = 0; i < 24; i++) {
-      var c = '#2A4A3D';
-      if (LIT.indexOf(i) >= 0) c = '#45BC89';
-      if (i === 9 || i === 22) c = '#E0A83A';
-      ports += '<div class="port"><i style="background:' + c + '"></i><u></u></div>';
-    }
     var cards = L.sys.map(function (s, i) {
-      return '<div class="card"><span class="n">' + esc(s[0]) + '</span><span class="l">' + esc(s[1]) + '</span>' +
+      return '<div class="card rv"><div class="ico">' + svg(IDS[i]) + '</div><h3>' + esc(s[0]) + '</h3><span class="d">' + esc(s[1]) + '</span>' +
         (s[2] ? '<span class="b">' + esc(s[2]) + '</span>' : '') +
         '<button type="button" class="addbtn" id="b-' + IDS[i] + '" data-id="' + IDS[i] + '"></button></div>';
     }).join('');
-    var services = L.services.map(function (s) {
-      return '<div class="svc"><div class="a">' + esc(s[0]) + '</div><div class="c">' + esc(s[1]) + '</div></div>';
+    var steps = L.services.map(function (s, i) {
+      return '<div class="step"><span class="no">0' + (i + 1) + '</span><h3>' + esc(s[0]) + '</h3><p>' + esc(s[1]) + '</p></div>';
     }).join('');
-    var supply = L.supply.map(function (s) {
-      return '<div class="tile"><div class="k">' + esc(s[0]) + '</div><div><div class="nm" dir="ltr" style="text-align:start">' + esc(s[1]) + '</div><div class="sp">' + esc(s[2]) + '</div></div></div>';
+    var shots;
+    if (PROJECTS.length) {
+      shots = PROJECTS.map(function (p) {
+        var t = p[state.lang === 'ar' ? 'ar' : 'en'] || p.en;
+        return '<div class="shot rv"><img src="' + esc(p.img) + '" alt="' + esc(t) + '" loading="lazy"><div class="cap"><b>' + esc(t) + '</b><span>' + esc(L.sys[p.sys || 0][0]) + '</span></div></div>';
+      }).join('');
+    } else {
+      shots = [0, 2, 1, 5, 6, 3].map(function (i) {
+        return '<div class="shot rv"><div class="art"></div><div class="cap"><b>' + esc(L.sys[i][0]) + '</b><span>' + esc(L.soon) + '</span></div></div>';
+      }).join('');
+    }
+    var tiles = L.supply.map(function (s) {
+      return '<div class="tile"><b>' + esc(s[0]) + '</b><span class="br" dir="ltr" style="text-align:start">' + esc(s[1]) + '</span><span>' + esc(s[2]) + '</span></div>';
     }).join('');
     var brands = ['UniFi', 'Hikvision', 'Grandstream', 'Synology'].map(function (b) {
-      return '<a href="#supply">' + b + '</a>';
+      return '<a class="brand-pill rv" href="#supply" dir="ltr">' + b + '</a>';
     }).join('');
+    var tm = '';
+    if (TESTIMONIALS.length) {
+      tm = '<section class="sec"><div class="wrap"><div class="head"><span class="eyebrow">' + esc(L.tmEy) + '</span><h2>' + esc(L.tmH) + '</h2></div><div class="tm">' +
+        TESTIMONIALS.map(function (t) {
+          var x = t[state.lang] || t.en;
+          return '<figure class="rv"><blockquote>' + esc(x.q) + '</blockquote><figcaption><b>' + esc(x.n) + '</b>' + esc(x.r || '') + '</figcaption></figure>';
+        }).join('') + '</div></div></section>';
+    }
     var gen = waLink(L.wGeneric);
+    var fct = [L.f1, L.f2, L.f3, L.f4].map(function (f) { return '<div class="fact"><b class="grad">' + esc(f[0]) + '</b><span>' + esc(f[1]) + '</span></div>'; }).join('');
 
     return '' +
-      '<div class="top"><div class="wrap row between"><span>' + esc(L.hours) + '</span><div class="row">' +
-      '<span class="mono" dir="ltr">+974 4441 0210</span>' +
-      '<a href="' + IG + '" target="_blank" rel="noopener">Instagram</a>' +
-      '<button type="button" class="lang" id="langBtn">' + esc(L.other) + '</button></div></div></div>' +
+      '<header><div class="wrap bar"><a href="#top" class="brand" dir="ltr"><span class="lg"><img src="assets/logo.png" alt=""></span><span><b>Datum</b><small>Technologies</small></span></a>' +
+      '<nav><a class="l" href="#systems">' + esc(L.navSystems) + '</a><a class="l" href="#services">' + esc(L.navServices) + '</a><a class="l" href="#work">' + esc(L.navWork) + '</a><a class="l" href="#brands">' + esc(L.navBrands) + '</a><a class="l" href="#contact">' + esc(L.navContact) + '</a></nav>' +
+      '<div class="tools"><button type="button" class="ib" id="langBtn">' + esc(L.other) + '</button>' +
+      '<button type="button" class="ib" id="themeBtn" aria-label="' + esc(L.theme) + '"><svg class="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="ic-moon" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg></button>' +
+      '<a class="btn fill sm" href="#quote">' + esc(L.navQuote) + ' (<span data-nav-count>0</span>)</a></div></div></header>' +
 
-      '<div class="nav"><div class="wrap"><a href="#top" class="brand" dir="ltr"><b>Datum</b><span>Technologies</span></a>' +
-      '<div class="links"><a href="#systems">' + esc(L.navSystems) + '</a><a href="#services">' + esc(L.navServices) + '</a>' +
-      '<a href="#brands">' + esc(L.navBrands) + '</a><a href="#contact">' + esc(L.navContact) + '</a>' +
-      '<a href="#quote" class="pill">' + esc(L.navQuote) + ' (<span data-nav-count>0</span>)</a></div></div></div>' +
+      '<main><section id="top" class="hero"><div class="wrap"><div class="stack">' +
+      '<span class="eyebrow">' + esc(L.eyebrow) + '</span><h1>' + esc(L.h1a) + ' <span class="grad">' + esc(L.h1b) + '</span></h1><p class="lead">' + esc(L.lead) + '</p>' +
+      '<div class="row"><a class="btn fill" href="#systems">' + esc(L.btnSystems) + '</a><a class="btn" href="' + gen + '" target="_blank" rel="noopener">' + esc(L.btnWa) + '</a></div></div>' +
+      '<div>' + topology(L) + '</div></div></section>' +
 
-      '<div id="top" class="wrap hero"><div class="stack">' +
-      '<span class="eyebrow">' + esc(L.eyebrow) + '</span><h1>' + esc(L.h1) + '</h1><p class="lead">' + esc(L.lead) + '</p>' +
-      '<div class="row" style="gap:12px"><a class="btn fill" href="#systems">' + esc(L.btnSystems) + '</a>' +
-      '<a class="btn" href="#contact">' + esc(L.btnContact) + '</a>' +
-      '<a class="btn" href="' + gen + '" target="_blank" rel="noopener">' + esc(L.btnWa) + '</a></div></div>' +
-      '<div><div class="face"><div class="cap"><span>' + L.faceA + '</span><span>' + L.faceB + '</span></div>' +
-      '<div class="ports">' + ports + '</div>' +
-      '<div class="up"><span class="cap" style="display:block">' + L.faceC + '</span><div><em></em><em></em><em></em><em></em></div></div></div></div></div>' +
+      '<section class="facts"><div class="wrap">' + fct + '</div></section>' +
 
-      '<div id="systems" class="band"><div class="wrap sec"><div style="display:flex;flex-direction:column;gap:12px;max-width:640px">' +
-      '<h2>' + esc(L.sysH) + '</h2><p style="margin:0;color:var(--ink2)">' + esc(L.sysP) + '</p></div><div class="cards">' + cards + '</div></div></div>' +
+      '<section id="systems" class="sec"><div class="wrap"><div class="head rv"><span class="eyebrow">01</span><h2>' + esc(L.sysH) + '</h2><p>' + esc(L.sysP) + '</p></div><div class="cards">' + cards + '</div></div></section>' +
 
-      '<div id="quote" class="wrap"><div class="two" style="padding-top:88px;padding-bottom:24px">' +
-      '<div style="flex:1 1 380px;display:flex;flex-direction:column;gap:20px"><h2>' + esc(L.quoteH) + '</h2>' +
+      '<section id="services" class="sec alt"><div class="wrap"><div class="head rv"><span class="eyebrow">' + esc(L.servEy) + '</span><h2>' + esc(L.servH) + '</h2><p>' + esc(L.servP) + '</p></div><div class="steps rv">' + steps + '</div></div></section>' +
+
+      '<section id="work" class="sec"><div class="wrap"><div class="head rv"><span class="eyebrow">' + esc(L.workEy) + '</span><h2>' + esc(L.workH) + '</h2><p>' + esc(L.workP) + '</p></div><div class="gal">' + shots + '</div></div></section>' +
+
+      tm +
+
+      '<section id="supply" class="sec alt"><div class="wrap"><div class="head rv"><span class="eyebrow">' + esc(L.supplyEy) + '</span><h2>' + esc(L.supplyH) + '</h2></div>' +
+      '<div id="brands" class="brands">' + brands + '</div><div class="tiles">' + tiles + '</div></div></section>' +
+
+      '<section id="quote" class="sec"><div class="wrap"><div class="quote">' +
+      '<div class="rv" style="flex:1 1 380px;display:flex;flex-direction:column;gap:18px"><span class="eyebrow">' + esc(L.quoteEy) + '</span><h2>' + esc(L.quoteH) + '</h2>' +
       '<p style="margin:0;color:var(--ink2);max-width:460px">' + esc(L.quoteP) + '</p><div class="q-list" id="qList"></div></div>' +
-      '<div class="form" style="flex:1 1 380px">' +
+      '<div class="form rv" style="flex:1 1 380px">' +
       '<div class="fld"><label for="q-name">' + esc(L.lblName) + '</label><input id="q-name" type="text" autocomplete="name"></div>' +
       '<div class="fld"><label for="q-phone">' + esc(L.lblPhone) + '</label><input id="q-phone" type="tel" dir="ltr" autocomplete="tel"></div>' +
       '<div class="fld"><label for="q-email">' + esc(L.lblEmail) + '</label><input id="q-email" type="email" dir="ltr" autocomplete="email"></div>' +
       '<div class="fld"><label for="q-note">' + esc(L.lblNote) + '</label><textarea id="q-note" rows="3"></textarea></div>' +
       '<a id="send" class="send" href="#quote" aria-disabled="true">' + esc(L.send) + '</a>' +
-      '<span class="small" id="missing">' + esc(L.missing) + '</span><span class="small">' + esc(L.waNote) + '</span></div></div></div>' +
+      '<span class="small" id="missing">' + esc(L.missing) + '</span><span class="small">' + esc(L.waNote) + '</span></div></div></div></section>' +
 
-      '<div id="services" class="wrap"><div class="two" style="padding-top:88px;padding-bottom:88px">' +
-      '<div style="flex:1 1 340px;display:flex;flex-direction:column;gap:16px"><h2>' + esc(L.servH) + '</h2>' +
-      '<p style="margin:0;color:var(--ink2);max-width:440px">' + esc(L.servP) + '</p></div>' +
-      '<div style="flex:2 1 560px;display:flex;flex-direction:column">' + services + '</div></div></div>' +
-
-      '<div id="supply" class="band"><div class="wrap sec"><h2>' + esc(L.supplyH) + '</h2><div class="cards">' + supply + '</div></div></div>' +
-
-      '<div id="brands" class="wrap" style="padding-top:72px;padding-bottom:72px;display:flex;flex-direction:column;gap:28px">' +
-      '<span class="small" style="font-weight:600">' + esc(L.brandsLabel) + '</span><div class="brands">' + brands + '</div></div>' +
-
-      '<div id="contact" class="wrap"><div class="contact"><div><h2>' + esc(L.contactH) + '</h2><p>' + esc(L.contactP) + '</p>' +
+      '<section id="contact" class="wrap"><div class="contact rv"><div><h2>' + esc(L.contactH) + '</h2><p>' + esc(L.contactP) + '</p>' +
       '<div><a class="btn fill" href="' + gen + '" target="_blank" rel="noopener">' + esc(L.contactBtn) + '</a></div></div>' +
       '<div><div class="g"><span class="lb">' + esc(L.lblPhones) + '</span>' +
       '<span class="mono v" dir="ltr" style="text-align:start">+974 4441 0210</span>' +
@@ -327,20 +431,16 @@ h2{font-size:32px}
       '<span class="mono v" dir="ltr" style="text-align:start">+974 3131 3064 · WhatsApp</span></div>' +
       '<div class="g"><span class="lb">' + esc(L.lblMail) + '</span><span class="mono v" dir="ltr" style="text-align:start">info@datum.qa</span></div>' +
       '<div class="g"><span class="lb">' + esc(L.lblInsta) + '</span><a class="l mono v" href="' + IG + '" target="_blank" rel="noopener" dir="ltr" style="text-align:start">@datum.qa</a></div>' +
-      '<div class="g"><span class="lb">' + esc(L.lblAddr) + '</span><span class="v">' + esc(L.address) + '</span>' +
-      '<a class="l" href="' + MAP + '" target="_blank" rel="noopener">' + esc(L.map) + '</a></div>' +
-      '<div class="g"><span class="lb">' + esc(L.lblHours) + '</span><span class="v">' + esc(L.hoursLong) + '</span></div></div></div></div>' +
+      '<div class="g"><span class="lb">' + esc(L.lblAddr) + '</span><span class="v">' + esc(L.address) + '</span><a class="l" href="' + MAP + '" target="_blank" rel="noopener">' + esc(L.map) + '</a></div>' +
+      '<div class="g"><span class="lb">' + esc(L.lblHours) + '</span><span class="v">' + esc(L.hoursLong) + '</span></div></div></div></section></main>' +
 
-      '<div class="foot"><div class="wrap row between"><span>' + esc(L.rights) + '</span><div class="row">' +
-      '<a href="#systems">' + esc(L.navSystems) + '</a><a href="#services">' + esc(L.navServices) + '</a>' +
-      '<a href="#contact">' + esc(L.navContact) + '</a><a href="' + IG + '" target="_blank" rel="noopener">Instagram</a></div></div></div>';
+      '<footer><div class="wrap"><span>' + esc(L.rights) + '</span><span><a href="' + IG + '" target="_blank" rel="noopener">Instagram</a></span></div></footer>' +
+      '<a class="wa" href="' + gen + '" target="_blank" rel="noopener" aria-label="' + esc(L.waLabel) + '"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></a>';
   }
 
   function chosen(L) {
     var out = [];
-    IDS.forEach(function (id, i) {
-      if (state.sel.indexOf(id) >= 0) out.push({ id: id, name: L.sys[i][0] });
-    });
+    IDS.forEach(function (id, i) { if (state.sel.indexOf(id) >= 0) out.push({ id: id, name: L.sys[i][0] }); });
     return out;
   }
 
@@ -349,7 +449,6 @@ h2{font-size:32px}
     var ch = chosen(L);
     var counts = document.querySelectorAll('[data-nav-count]');
     for (var k = 0; k < counts.length; k++) counts[k].textContent = ch.length;
-
     IDS.forEach(function (id) {
       var b = document.getElementById('b-' + id);
       if (!b) return;
@@ -358,7 +457,6 @@ h2{font-size:32px}
       b.className = 'addbtn' + (on ? ' on' : '');
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
-
     var list = document.getElementById('qList');
     if (ch.length === 0) {
       list.innerHTML = '<p class="q-empty">' + esc(L.none) + '</p>';
@@ -367,7 +465,6 @@ h2{font-size:32px}
         return '<div class="q-item"><b>' + esc(c.name) + '</b><button type="button" data-remove="' + c.id + '" aria-label="' + esc(L.remove + ' ' + c.name) + '">' + esc(L.remove) + '</button></div>';
       }).join('');
     }
-
     var phoneOk = state.phone.replace(/[^0-9]/g, '').length >= 6;
     var can = ch.length > 0 && state.name.trim() !== '' && phoneOk;
     var send = document.getElementById('send');
@@ -400,11 +497,25 @@ h2{font-size:32px}
     update();
   }
 
+  function reveal() {
+    var els = document.querySelectorAll('.rv');
+    if (!('IntersectionObserver' in window)) { for (var i = 0; i < els.length; i++) els[i].classList.add('in'); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    for (var j = 0; j < els.length; j++) io.observe(els[j]);
+  }
+
   function bind() {
     document.getElementById('langBtn').addEventListener('click', function () {
       state.lang = state.lang === 'en' ? 'ar' : 'en';
       render();
       window.scrollTo(0, 0);
+    });
+    document.getElementById('themeBtn').addEventListener('click', function () {
+      state.theme = state.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', state.theme);
+      try { localStorage.setItem('datum-theme', state.theme); } catch (e) {}
     });
     var fields = { 'q-name': 'name', 'q-phone': 'phone', 'q-email': 'email', 'q-note': 'note' };
     Object.keys(fields).forEach(function (id) {
@@ -432,9 +543,11 @@ h2{font-size:32px}
     var L = T[state.lang];
     document.documentElement.lang = state.lang;
     document.documentElement.dir = L.dir;
+    document.documentElement.setAttribute('data-theme', state.theme);
     app.innerHTML = tpl(L);
     bind();
     update();
+    reveal();
   }
 
   render();
