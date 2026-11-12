@@ -69,7 +69,7 @@ html[dir=rtl] .sel .tag{padding:6px 14px 6px 8px}
 .sel .tag i{font-style:normal;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--bg);color:var(--ink2);font-size:14px;line-height:1}
 .sel .none{margin:0;color:var(--ink3);font-size:14.5px;align-self:center}
 .form{display:flex;flex-direction:column;gap:16px;background:transparent;border:0;padding:0}
-.hint{display:none;margin:0;font-size:14px;color:#E0A83A}
+.hint{display:none;margin:0;font-size:14px;color:var(--warn)}
 .hint.on{display:block}
 .fine{font-size:13.5px;color:var(--ink3);margin:0}
 
@@ -89,7 +89,7 @@ html[lang=ar] .sumh{letter-spacing:0;text-transform:none;font-size:14px}
 .row2{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
 .fld label{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;font-weight:600;color:var(--ink)}
 .fld label em{font-style:normal;font-weight:500;font-size:12px;color:var(--ink3)}
-.fld label em.rq{color:#E0A83A}
+.fld label em.rq{color:var(--warn)}
 .inp{position:relative}
 .inp>svg{position:absolute;inset-inline-start:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--ink3);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;transition:stroke .2s}
 .inp.ta>svg{top:16px;transform:none}
@@ -128,6 +128,13 @@ html[lang=ar] .pkg span.n{font-family:inherit}
 footer{margin-top:0}
 .note{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:-8px 0 22px;padding:12px 16px;border:1px solid var(--green);border-radius:12px;background:color-mix(in srgb,var(--green) 12%,var(--surface));font-size:14.5px}
 .note .na{display:inline-flex;gap:8px;align-items:center}
+.cl{display:block;font-weight:600;font-size:13.5px;margin-bottom:8px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font:inherit;font-size:14px;font-weight:500;color:var(--ink);background:var(--bg2);border:1.5px solid var(--line);border-radius:999px;padding:8px 16px;min-height:44px;cursor:pointer;transition:border-color .2s,background .2s}
+.pill:hover{border-color:var(--green)}
+.pill[aria-pressed=true]{border-color:var(--green);background:color-mix(in srgb,var(--green) 18%,var(--bg2))}
+.rem{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink2);cursor:pointer;min-height:44px}
+.rem input{width:20px;height:20px;accent-color:var(--green);flex:none}
 .send.alt{min-height:48px;font-size:15px;margin-top:0}
 .send.alt.ready{background:var(--surface2);color:var(--ink);border:1px solid var(--line);box-shadow:none}
 .send.alt.ready:hover{border-color:var(--green)}
@@ -185,12 +192,13 @@ footer{margin-top:0}
       pickH: 'Choose your systems', pickP: 'Tap to add or remove. You can pick as many as you need.',
       detH: 'Your details', detP: 'We use these to prepare your quote and get back to you.',
       sel: 'Selected', none: 'No systems selected yet.', rm: 'Remove',
+      lblVia: 'How should we reach you? (optional)', lblWhen: 'Best time to reach you (optional)', via: { whatsapp: 'WhatsApp', call: 'Phone call' }, when: { morning: 'Morning', afternoon: 'Afternoon', evening: 'Evening', any: 'Any time' }, remember: 'Remember my details on this device', wVia: 'Preferred contact', wWhen: 'Best time',
       lblName: 'Name', lblPhone: 'Phone number', lblEmail: 'Email (optional)', lblNote: 'Project details (optional)',
       send: 'Send on WhatsApp', missing: 'To send, choose at least one system and enter your name and phone number.',
       pkgH: 'Start with a package', pkgP: 'Pick a ready setup, then adjust the systems below.', pkgN: 'systems',
       t1: 'Free quote, no obligation', t2: 'Our team replies on WhatsApp', t3: 'Your details are used only for this request',
       fine: 'WhatsApp opens with your request filled in. Press send there to deliver it to us.',
-      rights: 'Datum Technologies. All rights reserved.', waLabel: 'Chat on WhatsApp',
+      skip: 'Skip to content', rights: 'Datum Technologies. All rights reserved.', waLabel: 'Chat on WhatsApp',
       wHello: 'Hello Datum, I would like a quote.', wName: 'Name', wPhone: 'Phone', wEmail: 'Email', wSystems: 'Systems', wPackage: 'Package',
       mailBtn: 'Send by email instead', mailSubject: 'Quote request from the Datum website', sentH: 'Almost done', sentP: 'WhatsApp should now be open with your request. Press send there to deliver it to us.', sentAgain: 'Open WhatsApp again',
       share: 'Share', shareText: 'My selection from Datum Technologies:', noteTxt: 'Welcome back. We kept your selection.', noteReset: 'Start over', noteClose: 'Dismiss', wDetails: 'Details', wFrom: 'Sent from the Datum website'
@@ -202,12 +210,13 @@ footer{margin-top:0}
       pickH: 'اختر أنظمتك', pickP: 'اضغط للإضافة أو الإزالة. يمكنك اختيار ما تحتاجه.',
       detH: 'بياناتك', detP: 'نستخدمها لتجهيز عرض السعر والرد عليك.',
       sel: 'المختار', none: 'لم تختر أي نظام بعد.', rm: 'إزالة',
+      lblVia: 'كيف تفضّل أن نتواصل معك؟ (اختياري)', lblWhen: 'أفضل وقت للتواصل (اختياري)', via: { whatsapp: 'واتساب', call: 'مكالمة هاتفية' }, when: { morning: 'صباحًا', afternoon: 'بعد الظهر', evening: 'مساءً', any: 'في أي وقت' }, remember: 'تذكّر بياناتي على هذا الجهاز', wVia: 'طريقة التواصل المفضلة', wWhen: 'أفضل وقت',
       lblName: 'الاسم', lblPhone: 'رقم الهاتف', lblEmail: 'البريد الإلكتروني (اختياري)', lblNote: 'تفاصيل المشروع (اختياري)',
       send: 'إرسال عبر واتساب', missing: 'للإرسال، اختر نظامًا واحدًا على الأقل واكتب اسمك ورقم هاتفك.',
       pkgH: 'ابدأ بباقة جاهزة', pkgP: 'اختر تجهيزًا جاهزًا ثم عدّل الأنظمة بالأسفل.', pkgN: 'أنظمة',
       t1: 'عرض سعر مجاني بدون التزام', t2: 'فريقنا يرد عليك على واتساب', t3: 'بياناتك تُستخدم لهذا الطلب فقط',
       fine: 'سيفتح واتساب وفيه طلبك مكتوبًا. اضغط إرسال هناك ليصلنا.',
-      rights: 'داتوم تكنولوجيز. جميع الحقوق محفوظة.', waLabel: 'تواصل عبر واتساب',
+      skip: 'تخطَّ إلى المحتوى', rights: 'داتوم تكنولوجيز. جميع الحقوق محفوظة.', waLabel: 'تواصل عبر واتساب',
       wHello: 'مرحبًا داتوم، أرغب في الحصول على عرض سعر.', wName: 'الاسم', wPhone: 'الهاتف', wEmail: 'البريد الإلكتروني', wPackage: 'الباقة',
       mailBtn: 'أو أرسل بالبريد الإلكتروني', mailSubject: 'طلب عرض سعر من موقع داتوم', sentH: 'اقتربت من الانتهاء', sentP: 'يجب أن يكون واتساب مفتوحًا الآن ومعه طلبك. اضغط إرسال هناك ليصلنا.', sentAgain: 'افتح واتساب مرة أخرى',
       share: 'مشاركة', shareText: 'اختياراتي من داتوم تكنولوجيز:', noteTxt: 'أهلًا بعودتك. احتفظنا باختياراتك.', noteReset: 'ابدأ من جديد', noteClose: 'إغلاق', wSystems: 'الأنظمة المطلوبة', wDetails: 'التفاصيل', wFrom: 'أُرسل من موقع داتوم'
@@ -242,7 +251,21 @@ footer{margin-top:0}
   var lang = q.get('lang') === 'ar' || q.get('lang') === 'en' ? q.get('lang') : (get('datum-lang') === 'ar' || get('datum-lang') === 'en' ? get('datum-lang') : ((navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en'));
   var theme = get('datum-theme');
   if (theme !== 'light' && theme !== 'dark') theme = 'light';
-  var f = { name: '', phone: '', email: '', note: '' };
+  var f = { name: '', phone: '', email: '', note: '', via: '', when: '' };
+  var VIA = ['whatsapp', 'call'], WHEN = ['morning', 'afternoon', 'evening', 'any'];
+  var remember = get('datum-contact-off') !== '1';
+  if (remember) {
+    try {
+      var sc = JSON.parse(get('datum-contact') || '{}');
+      ['name', 'phone', 'email'].forEach(function (k) { if (typeof sc[k] === 'string') f[k] = sc[k].slice(0, 120); });
+      if (VIA.indexOf(sc.via) >= 0) f.via = sc.via;
+      if (WHEN.indexOf(sc.when) >= 0) f.when = sc.when;
+    } catch (e) {}
+  }
+  function saveContact() {
+    if (!remember) return;
+    put('datum-contact', JSON.stringify({ name: f.name, phone: f.phone, email: f.email, via: f.via, when: f.when }));
+  }
   var app = document.getElementById('app');
 
   var WAI = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg>';
@@ -260,7 +283,7 @@ footer{margin-top:0}
       return '<button type="button" class="opt" data-id="' + id + '" aria-pressed="false"><span class="ck">' + CK + '</span><span class="ic">' + svg(id) + '</span><b>' + esc(n[0]) + '</b>' + (n[1] ? '<small dir="ltr" style="text-align:start">' + esc(n[1]) + '</small>' : '') + '</button>';
     }).join('');
     app.innerHTML =
-      '<div class="qp"><div class="wrap">' +
+      '<a class="skip" href="#main">' + esc(L.skip) + '</a><div class="qp" role="main" id="main" tabindex="-1"><div class="wrap">' +
       '<div class="top"><a class="back" href="index.html"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>' + esc(L.back) + '</a>' +
       '<div class="tools"><button type="button" class="ib" id="shareBtn" aria-label="' + esc(L.share) + '"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7 M12 3v12 M8 7l4-4 4 4"/></svg><span>' + esc(L.share) + '</span></button><button type="button" class="ib" id="langBtn">' + esc(L.other) + '</button>' +
       '<button type="button" class="ib" id="themeBtn" aria-label="' + esc(L.theme) + '"><svg class="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="ic-moon" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg></button></div></div>' +
@@ -279,7 +302,10 @@ footer{margin-top:0}
       '<div class="row2"><div class="fld"><label for="q-name">' + esc(L.lblName) + '<em class="rq">*</em></label><div class="inp"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><input id="q-name" type="text" autocomplete="name" required></div></div>' +
       '<div class="fld"><label for="q-phone">' + esc(L.lblPhone) + '<em class="rq">*</em></label><div class="inp"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><input id="q-phone" type="tel" dir="ltr" autocomplete="tel" placeholder="+974 0000 0000" required></div></div></div>' +
       '<div class="fld"><label for="q-email">' + esc(L.lblEmail) + '</label><div class="inp"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><input id="q-email" type="email" dir="ltr" autocomplete="email" placeholder="name@company.com"></div></div>' +
+      '<div class="fld"><span class="cl" id="cl-via">' + esc(L.lblVia) + '</span><div class="pills" role="group" aria-labelledby="cl-via">' + VIA.map(function (k) { return '<button type="button" class="pill" data-k="via" data-v="' + k + '" aria-pressed="false">' + esc(L.via[k]) + '</button>'; }).join('') + '</div></div>' +
+      '<div class="fld"><span class="cl" id="cl-when">' + esc(L.lblWhen) + '</span><div class="pills" role="group" aria-labelledby="cl-when">' + WHEN.map(function (k) { return '<button type="button" class="pill" data-k="when" data-v="' + k + '" aria-pressed="false">' + esc(L.when[k]) + '</button>'; }).join('') + '</div></div>' +
       '<div class="fld"><label for="q-note">' + esc(L.lblNote) + '</label><div class="inp ta"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><textarea id="q-note" rows="3"></textarea></div></div>' +
+      '<label class="rem"><input type="checkbox" id="q-remember"' + (remember ? ' checked' : '') + '><span>' + esc(L.remember) + '</span></label>' +
       '<a id="send" class="send" href="#" aria-disabled="true">' + WAI + esc(L.send) + '</a>' +
       '<a id="mail" class="send alt" href="#" aria-disabled="true">' + esc(L.mailBtn) + '</a>' +
       '<div class="sent" id="sent" hidden><b>' + esc(L.sentH) + '</b><span>' + esc(L.sentP) + '</span><a id="sentAgain" href="#" target="_blank" rel="noopener">' + esc(L.sentAgain) + '</a></div>' +
@@ -320,6 +346,9 @@ footer{margin-top:0}
       var s = PK[b.getAttribute('data-pk')].sys;
       b.setAttribute('aria-pressed', s.length === sel.length && s.every(function (x) { return sel.indexOf(x) >= 0; }) ? 'true' : 'false');
     });
+    document.querySelectorAll('.pill').forEach(function (b) {
+      b.setAttribute('aria-pressed', f[b.getAttribute('data-k')] === b.getAttribute('data-v') ? 'true' : 'false');
+    });
     var cnt = document.getElementById('cnt'); cnt.textContent = ordered.length; cnt.className = 'cnt' + (ordered.length ? '' : ' z');
     var box = document.getElementById('sel');
     box.innerHTML = ordered.length === 0 ? '<p class="none">' + esc(L.none) + '</p>' : ordered.map(function (id) {
@@ -334,6 +363,8 @@ footer{margin-top:0}
     if (can) {
       var lines = [L.wHello, '', L.wName + ': ' + f.name.trim(), L.wPhone + ': ' + f.phone.trim()];
       if (f.email.trim()) lines.push(L.wEmail + ': ' + f.email.trim());
+      if (f.via) lines.push(L.wVia + ': ' + L.via[f.via]);
+      if (f.when) lines.push(L.wWhen + ': ' + L.when[f.when]);
       var pk = PKORDER.filter(function (k) { var p = PK[k].sys; return p.length === sel.length && p.every(function (x) { return sel.indexOf(x) >= 0; }); })[0];
       if (pk) lines.push(L.wPackage + ': ' + PKT[lang][pk][0]);
       lines.push(L.wSystems + ':');
@@ -403,7 +434,20 @@ footer{margin-top:0}
     Object.keys(map).forEach(function (id) {
       var el = document.getElementById(id);
       el.value = f[map[id]];
-      el.addEventListener('input', function () { f[map[id]] = el.value; update(); });
+      el.addEventListener('input', function () { f[map[id]] = el.value; saveContact(); update(); });
+    });
+    document.querySelectorAll('.pill').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var k = b.getAttribute('data-k'), v = b.getAttribute('data-v');
+        f[k] = f[k] === v ? '' : v;
+        saveContact();
+        update();
+      });
+    });
+    document.getElementById('q-remember').addEventListener('change', function () {
+      remember = this.checked;
+      if (remember) { try { localStorage.removeItem('datum-contact-off'); } catch (e) {} saveContact(); }
+      else { put('datum-contact-off', '1'); try { localStorage.removeItem('datum-contact'); } catch (e) {} }
     });
     document.getElementById('mail').addEventListener('click', function (e) {
       if (this.getAttribute('aria-disabled') === 'true') { e.preventDefault(); document.getElementById('send').click(); return; }
