@@ -97,7 +97,7 @@ html[lang=ar] .dh h1{font-size:50px}
         'Lighting, comfort and control working as one system, instead of separate switches and apps.',
         ['Lighting and scene control', 'Comfort and climate control', 'Control from wall panels and your phone', 'Planned together with your network and wiring'],
         ['New homes and villas', 'Renovations', 'Apartments']],
-      nas: ['Storage', 'NAS stations, hard drives and backups on your own network.', 'Synology',
+      nas: ['Storage', 'NAS stations, hard drives and backups on your own network.', 'Synology and Seagate',
         'Shared storage, hard drives and backups on your own network, so your files stay in your hands.',
         ['NAS and hard drive supply and setup', 'Shared folders and user access', 'Automatic backups', 'Remote access setup'],
         ['Offices sharing files', 'Homes with photo and media libraries', 'Businesses that need local backups']],
@@ -135,7 +135,7 @@ html[lang=ar] .dh h1{font-size:50px}
         'الإضاءة والراحة والتحكم في نظام واحد بدل المفاتيح والتطبيقات المنفصلة.',
         ['التحكم في الإضاءة والمشاهد', 'التحكم في الراحة والتكييف', 'التحكم من لوحات الحائط وهاتفك', 'تخطيط متكامل مع شبكتك وتمديداتك'],
         ['المنازل والفلل الجديدة', 'أعمال التجديد', 'الشقق']],
-      nas: ['التخزين', 'أجهزة NAS وأقراص تخزين ونسخ احتياطي على شبكتك الخاصة.', 'Synology',
+      nas: ['التخزين', 'أجهزة NAS وأقراص تخزين ونسخ احتياطي على شبكتك الخاصة.', 'Synology وSeagate',
         'تخزين مشترك وأقراص ونسخ احتياطي على شبكتك الخاصة، لتبقى ملفاتك بين يديك.',
         ['توريد وإعداد أجهزة NAS وأقراص التخزين', 'مجلدات مشتركة وصلاحيات للمستخدمين', 'نسخ احتياطي تلقائي', 'إعداد الوصول عن بعد'],
         ['المكاتب التي تتشارك الملفات', 'المنازل التي تحتفظ بمكتبات صور ووسائط', 'الشركات التي تحتاج نسخًا احتياطية محلية']],
@@ -180,7 +180,7 @@ html[lang=ar] .dh h1{font-size:50px}
   if (IDS.indexOf(id) < 0) { location.replace('index.html#systems'); return; }
   var lang = q.get('lang') === 'ar' || q.get('lang') === 'en' ? q.get('lang') : (store('datum-lang') === 'ar' ? 'ar' : 'en');
   var theme = store('datum-theme');
-  theme = 'dark';
+  if (theme !== 'light' && theme !== 'dark') theme = 'light';
   var app = document.getElementById('app');
 
   function render() {

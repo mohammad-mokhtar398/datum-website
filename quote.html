@@ -148,8 +148,8 @@ footer{margin-top:0}
     ar: { villa: ['فيلا ذكية', 'أتمتة منزلية كاملة وكاميرات مراقبة وشبكة قوية.'], office: ['مكتب صغير', 'شبكة وهواتف IP وكاميرات وتخزين.'], shop: ['محل', 'واي فاي وكاميرات وشبكة آمنة.'] }
   };
   var N = {
-    en: { wifi: ['Wi-Fi', 'UniFi'], network: ['Network', 'UniFi'], fw: ['Firewall', 'Netgate and UniFi'], cctv: ['CCTV', 'UniFi and Hikvision'], door: ['Door station', 'Hikvision and Grandstream'], phone: ['IP telephone', 'Grandstream'], home: ['Home automation', ''], nas: ['Storage', 'Synology'], car: ['Car tracking', ''] },
-    ar: { wifi: ['الواي فاي', 'UniFi'], network: ['الشبكات', 'UniFi'], fw: ['الجدار الناري', 'Netgate وUniFi'], cctv: ['كاميرات المراقبة', 'UniFi وHikvision'], door: ['محطة الباب', 'Hikvision وGrandstream'], phone: ['الهاتف عبر IP', 'Grandstream'], home: ['أتمتة المنازل', ''], nas: ['التخزين', 'Synology'], car: ['تتبع السيارات', ''] }
+    en: { wifi: ['Wi-Fi', 'UniFi'], network: ['Network', 'UniFi'], fw: ['Firewall', 'Netgate and UniFi'], cctv: ['CCTV', 'UniFi and Hikvision'], door: ['Door station', 'Hikvision and Grandstream'], phone: ['IP telephone', 'Grandstream'], home: ['Home automation', ''], nas: ['Storage', 'Synology and Seagate'], car: ['Car tracking', ''] },
+    ar: { wifi: ['الواي فاي', 'UniFi'], network: ['الشبكات', 'UniFi'], fw: ['الجدار الناري', 'Netgate وUniFi'], cctv: ['كاميرات المراقبة', 'UniFi وHikvision'], door: ['محطة الباب', 'Hikvision وGrandstream'], phone: ['الهاتف عبر IP', 'Grandstream'], home: ['أتمتة المنازل', ''], nas: ['التخزين', 'Synology وSeagate'], car: ['تتبع السيارات', ''] }
   };
   var T = {
     en: {
@@ -208,7 +208,7 @@ footer{margin-top:0}
 
   var lang = q.get('lang') === 'ar' || q.get('lang') === 'en' ? q.get('lang') : (get('datum-lang') === 'ar' ? 'ar' : 'en');
   var theme = get('datum-theme');
-  theme = 'dark';
+  if (theme !== 'light' && theme !== 'dark') theme = 'light';
   var f = { name: '', phone: '', email: '', note: '' };
   var app = document.getElementById('app');
 
