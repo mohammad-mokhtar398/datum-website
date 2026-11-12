@@ -62,7 +62,7 @@
   var T = {
     en: {
       dir: 'ltr', other: 'العربية',
-      short: ['Wi-Fi', 'Network', 'Firewall', 'CCTV', 'Door', 'IP phone', 'Smart home', 'Storage', 'Tracking'],
+      short: ['Wi-Fi', 'Network', 'Firewall', 'CCTV', 'Door stations', 'IP phone', 'Smart home', 'Storage', 'Tracking'],
       navSystems: 'Systems', navServices: 'Services', navWork: 'Work', navBrands: 'Brands', navContact: 'Contact', navQuote: 'Get a quote',
       eyebrow: 'IT, networking and smart homes in Qatar',
       h1a: 'Networks that work,', h1b: 'in homes and businesses.',
@@ -129,7 +129,7 @@
     },
     ar: {
       dir: 'rtl', other: 'English',
-      short: ['الواي فاي', 'الشبكات', 'الجدار الناري', 'الكاميرات', 'الباب', 'هاتف IP', 'المنزل الذكي', 'التخزين', 'التتبع'],
+      short: ['الواي فاي', 'الشبكات', 'الجدار الناري', 'الكاميرات', 'محطات الأبواب', 'هاتف IP', 'المنزل الذكي', 'التخزين', 'التتبع'],
       navSystems: 'الأنظمة', navServices: 'الخدمات', navWork: 'أعمالنا', navBrands: 'العلامات التجارية', navContact: 'تواصل معنا', navQuote: 'اطلب عرض سعر',
       eyebrow: 'تقنية المعلومات والشبكات والمنازل الذكية في قطر',
       h1a: 'شبكات تعمل بكفاءة،', h1b: 'في المنازل والشركات.',
@@ -222,7 +222,7 @@
       nodes += '<g><circle class="nd" cx="' + x + '" cy="' + y + '" r="24"/><circle class="dot" cx="' + x + '" cy="' + y + '" r="4"/>' +
         '<text x="' + x + '" y="' + (y + (y > 190 ? 44 : -34)) + '">' + esc(L.short[idx]) + '</text></g>';
     });
-    return '<svg class="topo" viewBox="0 0 480 400" role="img" aria-label="Network diagram"><circle class="pulse" cx="240" cy="200" r="40"/>' +
+    return '<svg class="topo" viewBox="-60 0 600 400" role="img" aria-label="Network diagram"><circle class="pulse" cx="240" cy="200" r="40"/>' +
       lines + '<circle class="core" cx="240" cy="200" r="40"/><path d="M222 200h36M240 182v36" stroke="#60BA48" stroke-width="2.4" stroke-linecap="round"/>' + nodes + '</svg>';
   }
 
