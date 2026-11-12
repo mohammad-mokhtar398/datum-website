@@ -165,7 +165,7 @@ footer{margin-top:0}
       t1: 'Free quote, no obligation', t2: 'Our team replies on WhatsApp', t3: 'Your details are used only for this request',
       fine: 'WhatsApp opens with your request filled in. Press send there to deliver it to us.',
       rights: 'Datum Technologies. All rights reserved.', waLabel: 'Chat on WhatsApp',
-      wHello: 'Hello Datum, I would like a quote.', wName: 'Name', wPhone: 'Phone', wEmail: 'Email', wSystems: 'Systems', wDetails: 'Details', wFrom: 'Sent from the Datum website'
+      wHello: 'Hello Datum, I would like a quote.', wName: 'Name', wPhone: 'Phone', wEmail: 'Email', wSystems: 'Systems', wPackage: 'Package', wDetails: 'Details', wFrom: 'Sent from the Datum website'
     },
     ar: {
       dir: 'rtl', other: 'English', back: 'العودة إلى الموقع', theme: 'التبديل بين الوضع الداكن والفاتح',
@@ -180,7 +180,7 @@ footer{margin-top:0}
       t1: 'عرض سعر مجاني بدون التزام', t2: 'فريقنا يرد عليك على واتساب', t3: 'بياناتك تُستخدم لهذا الطلب فقط',
       fine: 'سيفتح واتساب وفيه طلبك مكتوبًا. اضغط إرسال هناك ليصلنا.',
       rights: 'داتوم تكنولوجيز. جميع الحقوق محفوظة.', waLabel: 'تواصل عبر واتساب',
-      wHello: 'مرحبًا داتوم، أرغب في الحصول على عرض سعر.', wName: 'الاسم', wPhone: 'الهاتف', wEmail: 'البريد الإلكتروني', wSystems: 'الأنظمة المطلوبة', wDetails: 'التفاصيل', wFrom: 'أُرسل من موقع داتوم'
+      wHello: 'مرحبًا داتوم، أرغب في الحصول على عرض سعر.', wName: 'الاسم', wPhone: 'الهاتف', wEmail: 'البريد الإلكتروني', wPackage: 'الباقة', wSystems: 'الأنظمة المطلوبة', wDetails: 'التفاصيل', wFrom: 'أُرسل من موقع داتوم'
     }
   };
 
@@ -284,6 +284,8 @@ footer{margin-top:0}
     if (can) {
       var lines = [L.wHello, '', L.wName + ': ' + f.name.trim(), L.wPhone + ': ' + f.phone.trim()];
       if (f.email.trim()) lines.push(L.wEmail + ': ' + f.email.trim());
+      var pk = PKORDER.filter(function (k) { var p = PK[k].sys; return p.length === sel.length && p.every(function (x) { return sel.indexOf(x) >= 0; }); })[0];
+      if (pk) lines.push(L.wPackage + ': ' + PKT[lang][pk][0]);
       lines.push(L.wSystems + ':');
       ordered.forEach(function (id) { lines.push('- ' + N[lang][id][0]); });
       if (f.note.trim()) lines.push(L.wDetails + ': ' + f.note.trim());
