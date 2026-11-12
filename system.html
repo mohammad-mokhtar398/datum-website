@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datum Technologies</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px;color:var(--ink3);padding-top:28px}
+.crumb a{color:var(--ink2)}
+.dh{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.dh::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 80% at 85% 20%,var(--glow2),transparent 70%),radial-gradient(40% 50% at 5% 100%,var(--glow),transparent 70%);pointer-events:none}
+.dh .wrap{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:40px;padding-top:40px;padding-bottom:72px}
+.dh .txt{flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.dh h1{font-size:56px}
+html[lang=ar] .dh h1{font-size:50px}
+.dh .big{flex:0 1 300px;aspect-ratio:1;border-radius:28px;background:linear-gradient(140deg,var(--blue),#14336B);display:grid;place-items:center;border:1px solid #2F5CAA;box-shadow:0 30px 70px -30px var(--blue)}
+.dh .big svg{width:42%;height:42%;stroke:#fff;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.chip{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:18px}
+.panel h2{font-size:26px}
+.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.ticks li{display:flex;gap:12px;align-items:flex-start;color:var(--ink2)}
+.ticks li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='%2308130A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
+.ctaband{border-radius:22px;padding:48px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;background:linear-gradient(135deg,#17306A,#0B1A3A 60%,#0F2A33);border:1px solid #27407A;color:#fff}
+.ctaband h2{font-size:34px;max-width:560px}
+.ctaband .btn:not(.fill){color:#fff;border-color:#3A5A9A}
+.rel .card{padding:22px}
+@media (max-width:720px){.dh h1{font-size:38px}html[lang=ar] .dh h1{font-size:34px}.dh .big{flex-basis:140px;width:140px}.dh .wrap{padding-bottom:48px}.panel{padding:22px}.ctaband{padding:28px 20px}.ctaband h2{font-size:26px}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+(function () {
+  var WA = '97431313064';
+  var IDS = ['wifi', 'network', 'cctv', 'door', 'phone', 'home', 'nas', 'car'];
+  var ICONS = {
+    wifi: 'M2 9a15 15 0 0 1 20 0 M5.5 12.5a10 10 0 0 1 13 0 M9 16a5 5 0 0 1 6 0 M12 19.5h.01',
+    network: 'M9 3h6v5H9z M3 16h6v5H3z M15 16h6v5h-6z M12 8v4 M6 16v-4h12v4',
+    cctv: 'M3 7l12-3 2 7-12 3z M17 8l4-1v5l-3 .8 M9 15v4 M6 19h6',
+    door: 'M6 3h12v18H6z M14.5 12h.01 M9 8h3 M9 16h3',
+    phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z',
+    home: 'M3 11l9-8 9 8 M5 10v10h14V10 M10 20v-6h4v6',
+    nas: 'M4 5h16v5H4z M4 14h16v5H4z M7.5 7.5h.01 M7.5 16.5h.01',
+    car: 'M5 16l1.5-5a2 2 0 0 1 1.9-1.4h7.2a2 2 0 0 1 1.9 1.4L19 16 M3 16h18v3H3z M7 19v1.5 M17 19v1.5 M7.5 17.5h.01 M16.5 17.5h.01'
+  };
+  function svg(id) { return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + ICONS[id] + '"/></svg>'; }
+
+  /* name, short description, brands, intro, included[], fits[] */
+  var D = {
+    en: {
+      wifi: ['Wi-Fi', 'Access points placed for coverage, indoors and outdoors.', 'UniFi',
+        'Reliable wireless coverage planned around your space, so every room and outdoor area stays connected.',
+        ['Site survey and access point placement', 'Indoor and outdoor access points', 'Network setup with guest access', 'Coverage testing after installation'],
+        ['Homes and villas', 'Offices and shops', 'Outdoor areas and courtyards']],
+      network: ['Network', 'Switching and cabling, designed and tested end to end.', 'UniFi',
+        'The wired backbone behind everything else: switching and cabling, designed and tested from end to end.',
+        ['Structured cabling design and installation', 'PoE and managed switching', 'Cable testing with advanced tools', 'Documentation of the finished network'],
+        ['New buildings and fit-outs', 'Office moves and expansions', 'Upgrading slow or unreliable networks']],
+      cctv: ['CCTV', 'Camera systems for homes and businesses.', 'UniFi and Hikvision',
+        'Camera systems that cover the areas that matter, with recording and remote viewing set up for you.',
+        ['Camera selection and placement', 'Recorder or network video setup', 'Remote viewing on your phone', 'Cabling, power and configuration'],
+        ['Homes and villas', 'Shops and warehouses', 'Offices and car parks']],
+      door: ['Door station', 'See and speak to visitors at the door.', 'Hikvision and Grandstream',
+        'See and speak to visitors at the door, from inside the building or from your phone.',
+        ['Video door station installation', 'Indoor monitor or phone answering', 'Door release control where the lock allows', 'Connection to your existing network'],
+        ['Villas and apartments', 'Office entrances', 'Gated entries']],
+      phone: ['IP telephone', 'Office phone systems that run over your network.', 'Grandstream',
+        'Office phone systems that run over your own network, from a few extensions to a full team.',
+        ['IP phone and PBX setup', 'Extensions, call groups and voicemail', 'Network preparation for voice', 'Handover and after-sale support'],
+        ['Small and growing offices', 'Branches that need one phone system', 'Businesses replacing old lines']],
+      home: ['Home automation', 'Lighting, comfort and control working as one system.', '',
+        'Lighting, comfort and control working as one system, instead of separate switches and apps.',
+        ['Lighting and scene control', 'Comfort and climate control', 'Control from wall panels and your phone', 'Planned together with your network and wiring'],
+        ['New homes and villas', 'Renovations', 'Apartments']],
+      nas: ['Network-attached storage', 'Shared storage and backups on your own network.', 'Synology',
+        'Shared storage and backups on your own network, so your files stay in your hands.',
+        ['NAS and hard drive supply and setup', 'Shared folders and user access', 'Automatic backups', 'Remote access setup'],
+        ['Offices sharing files', 'Homes with photo and media libraries', 'Businesses that need local backups']],
+      car: ['Car tracking', 'Know where your vehicles are.', '',
+        'Know where your vehicles are, with tracking set up for a single car or a small fleet.',
+        ['Tracker supply and installation', 'Location viewing on phone or web', 'Setup for one vehicle or several', 'Support after installation'],
+        ['Families', 'Small businesses with vehicles', 'Delivery and service fleets']]
+    },
+    ar: {
+      wifi: ['الواي فاي', 'نقاط وصول موزعة لتغطية كاملة، داخل المباني وخارجها.', 'UniFi',
+        'تغطية لاسلكية موثوقة مخططة حسب مساحتك، لتبقى كل غرفة وكل منطقة خارجية متصلة.',
+        ['معاينة الموقع وتحديد أماكن نقاط الوصول', 'نقاط وصول داخلية وخارجية', 'إعداد الشبكة مع شبكة للضيوف', 'اختبار التغطية بعد التركيب'],
+        ['المنازل والفلل', 'المكاتب والمحلات', 'الأماكن الخارجية والساحات']],
+      network: ['الشبكات', 'سويتشات وكابلات، مصممة ومختبرة من البداية للنهاية.', 'UniFi',
+        'العمود الفقري السلكي لكل ما عداه: سويتشات وكابلات، مصممة ومختبرة من البداية للنهاية.',
+        ['تصميم وتركيب الكابلات المهيكلة', 'سويتشات PoE وسويتشات مُدارة', 'اختبار الكابلات بأدوات متقدمة', 'توثيق الشبكة بعد الانتهاء'],
+        ['المباني الجديدة وأعمال التجهيز', 'انتقال المكاتب وتوسعتها', 'تطوير الشبكات البطيئة أو غير المستقرة']],
+      cctv: ['كاميرات المراقبة', 'أنظمة كاميرات للمنازل والشركات.', 'UniFi وHikvision',
+        'أنظمة كاميرات تغطي المناطق المهمة، مع إعداد التسجيل والمشاهدة عن بعد.',
+        ['اختيار الكاميرات وتحديد أماكنها', 'إعداد جهاز التسجيل أو التسجيل عبر الشبكة', 'المشاهدة عن بعد على هاتفك', 'الكابلات والتغذية والإعداد'],
+        ['المنازل والفلل', 'المحلات والمستودعات', 'المكاتب ومواقف السيارات']],
+      door: ['محطة الباب', 'شاهد زوارك وتحدث معهم عند الباب.', 'Hikvision وGrandstream',
+        'شاهد زوارك وتحدث معهم عند الباب، من داخل المبنى أو من هاتفك.',
+        ['تركيب محطة باب بالفيديو', 'شاشة داخلية أو الرد من الهاتف', 'التحكم في فتح الباب حيثما يسمح القفل', 'الربط بشبكتك الحالية'],
+        ['الفلل والشقق', 'مداخل المكاتب', 'البوابات']],
+      phone: ['الهاتف عبر IP', 'أنظمة هاتف للمكاتب تعمل عبر شبكتك.', 'Grandstream',
+        'أنظمة هاتف للمكاتب تعمل عبر شبكتك الخاصة، من بضعة خطوط إلى فريق كامل.',
+        ['إعداد الهواتف وسنترال IP', 'الخطوط الداخلية ومجموعات الاتصال والبريد الصوتي', 'تجهيز الشبكة للصوت', 'التسليم والدعم بعد البيع'],
+        ['المكاتب الصغيرة والنامية', 'الفروع التي تحتاج نظام هاتف واحد', 'الشركات التي تستبدل خطوطها القديمة']],
+      home: ['أتمتة المنازل', 'الإضاءة والراحة والتحكم في نظام واحد.', '',
+        'الإضاءة والراحة والتحكم في نظام واحد بدل المفاتيح والتطبيقات المنفصلة.',
+        ['التحكم في الإضاءة والمشاهد', 'التحكم في الراحة والتكييف', 'التحكم من لوحات الحائط وهاتفك', 'تخطيط متكامل مع شبكتك وتمديداتك'],
+        ['المنازل والفلل الجديدة', 'أعمال التجديد', 'الشقق']],
+      nas: ['التخزين الشبكي (NAS)', 'تخزين مشترك ونسخ احتياطي على شبكتك الخاصة.', 'Synology',
+        'تخزين مشترك ونسخ احتياطي على شبكتك الخاصة، لتبقى ملفاتك بين يديك.',
+        ['توريد وإعداد أجهزة NAS وأقراص التخزين', 'مجلدات مشتركة وصلاحيات للمستخدمين', 'نسخ احتياطي تلقائي', 'إعداد الوصول عن بعد'],
+        ['المكاتب التي تتشارك الملفات', 'المنازل التي تحتفظ بمكتبات صور ووسائط', 'الشركات التي تحتاج نسخًا احتياطية محلية']],
+      car: ['تتبع السيارات', 'اعرف أين مركباتك.', '',
+        'اعرف أين مركباتك، مع إعداد التتبع لسيارة واحدة أو لأسطول صغير.',
+        ['توريد وتركيب أجهزة التتبع', 'عرض الموقع على الهاتف أو الويب', 'إعداد لمركبة واحدة أو عدة مركبات', 'الدعم بعد التركيب'],
+        ['العائلات', 'الشركات الصغيرة التي تملك مركبات', 'أساطيل التوصيل والخدمة']]
+    }
+  };
+
+  var T = {
+    en: {
+      dir: 'ltr', other: 'العربية', navBack: 'All systems', quote: 'Get a quote',
+      home: 'Home', systems: 'Systems',
+      brands: 'Brands', incH: 'What we deliver', fitH: 'Where it fits',
+      procEy: 'How we work', procH: 'From first drawing to annual service',
+      steps: [['Design and configuration', 'Design and configuration to meet the connectivity you need.'], ['Testing network', 'Network infrastructure tested with advanced tools to qualify all cabling.'], ['Supply and installation', 'Supply and installation of the latest equipment and components.'], ['Support', 'After-sale support and an annual maintenance contract.']],
+      ctaH: 'Ready to plan this system?', ctaBtn: 'Request a quote on WhatsApp', ctaAll: 'See all systems',
+      relEy: 'More systems', relH: 'You may also need', view: 'View details',
+      rights: 'Datum Technologies. All rights reserved.', theme: 'Switch between dark and light mode', waLabel: 'Chat on WhatsApp',
+      wMsg: function (n) { return 'Hello Datum, I would like a quote for: ' + n; }
+    },
+    ar: {
+      dir: 'rtl', other: 'English', navBack: 'كل الأنظمة', quote: 'اطلب عرض سعر',
+      home: 'الرئيسية', systems: 'الأنظمة',
+      brands: 'العلامات التجارية', incH: 'ما نقدمه', fitH: 'أين يناسب',
+      procEy: 'كيف نعمل', procH: 'من أول مخطط إلى الصيانة السنوية',
+      steps: [['التصميم والإعداد', 'تصميم وإعداد الشبكة بما يحقق الاتصال الذي تحتاجه.'], ['اختبار الشبكة', 'اختبار البنية التحتية للشبكة بأدوات متقدمة للتأكد من جودة كل الكابلات.'], ['التوريد والتركيب', 'توريد وتركيب أحدث المعدات والمكونات.'], ['الدعم', 'دعم بعد البيع وعقد صيانة سنوي.']],
+      ctaH: 'جاهز لتخطيط هذا النظام؟', ctaBtn: 'اطلب عرض سعر عبر واتساب', ctaAll: 'كل الأنظمة',
+      relEy: 'أنظمة أخرى', relH: 'قد تحتاج أيضًا', view: 'عرض التفاصيل',
+      rights: 'داتوم تكنولوجيز. جميع الحقوق محفوظة.', theme: 'التبديل بين الوضع الداكن والفاتح', waLabel: 'تواصل عبر واتساب',
+      wMsg: function (n) { return 'مرحبًا داتوم، أرغب في الحصول على عرض سعر لـ: ' + n; }
+    }
+  };
+
+  function store(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function put(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+  var q = new URLSearchParams(location.search);
+  var id = q.get('id');
+  if (IDS.indexOf(id) < 0) { location.replace('index.html#systems'); return; }
+  var lang = q.get('lang') === 'ar' || q.get('lang') === 'en' ? q.get('lang') : (store('datum-lang') === 'ar' ? 'ar' : 'en');
+  var theme = store('datum-theme');
+  if (theme !== 'light' && theme !== 'dark') theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  var app = document.getElementById('app');
+
+  function render() {
+    var L = T[lang], d = D[lang][id];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = L.dir;
+    document.documentElement.setAttribute('data-theme', theme);
+    document.title = d[0] + ' | Datum Technologies';
+    var wa = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(L.wMsg(d[0]));
+    var gen = 'https://wa.me/' + WA;
+    var rel = IDS.filter(function (x) { return x !== id; }).slice(0, 3).map(function (x) {
+      var r = D[lang][x];
+      return '<div class="card rv"><div class="ico">' + svg(x) + '</div><h3><a href="system.html?id=' + x + '&lang=' + lang + '">' + esc(r[0]) + '</a></h3><span class="d">' + esc(r[1]) + '</span>' +
+        '<div class="acts"><a class="more" href="system.html?id=' + x + '&lang=' + lang + '">' + esc(L.view) + '</a></div></div>';
+    }).join('');
+    var steps = L.steps.map(function (s, i) { return '<div class="step"><span class="no">0' + (i + 1) + '</span><h3>' + esc(s[0]) + '</h3><p>' + esc(s[1]) + '</p></div>'; }).join('');
+    var li = function (a) { return a.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join(''); };
+
+    app.innerHTML =
+      '<header><div class="wrap bar"><a href="index.html" class="brand" dir="ltr"><span class="lg"><img src="assets/logo.png" alt=""></span><span><b>Datum</b><small>Technologies</small></span></a>' +
+      '<nav><a class="l" href="index.html#systems">' + esc(L.navBack) + '</a></nav>' +
+      '<div class="tools"><button type="button" class="ib" id="langBtn">' + esc(L.other) + '</button>' +
+      '<button type="button" class="ib" id="themeBtn" aria-label="' + esc(L.theme) + '"><svg class="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="ic-moon" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg></button>' +
+      '<a class="btn fill sm" href="' + wa + '" target="_blank" rel="noopener">' + esc(L.quote) + '</a></div></div></header>' +
+      '<main><section class="dh"><div class="wrap" style="flex-direction:column;align-items:stretch;gap:0;padding:0 32px">' +
+      '<div class="crumb"><a href="index.html">' + esc(L.home) + '</a><span>/</span><a href="index.html#systems">' + esc(L.systems) + '</a><span>/</span><span>' + esc(d[0]) + '</span></div>' +
+      '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:40px;padding:24px 0 56px"><div class="txt"><span class="eyebrow">' + esc(L.systems) + '</span><h1>' + esc(d[0]) + '</h1>' +
+      '<p class="lead">' + esc(d[3]) + '</p>' +
+      (d[2] ? '<span class="chip"' + (lang === 'en' ? ' dir="ltr"' : '') + '>' + esc(L.brands) + ' · ' + esc(d[2]) + '</span>' : '') +
+      '<div class="row"><a class="btn fill" href="' + wa + '" target="_blank" rel="noopener">' + esc(L.ctaBtn) + '</a><a class="btn" href="index.html#systems">' + esc(L.ctaAll) + '</a></div></div>' +
+      '<div class="big">' + svg(id) + '</div></div></div></section>' +
+
+      '<section class="sec"><div class="wrap"><div class="cols">' +
+      '<div class="panel rv"><h2>' + esc(L.incH) + '</h2><ul class="ticks">' + li(d[4]) + '</ul></div>' +
+      '<div class="panel rv"><h2>' + esc(L.fitH) + '</h2><ul class="ticks">' + li(d[5]) + '</ul></div></div></div></section>' +
+
+      '<section class="sec alt"><div class="wrap"><div class="head rv"><span class="eyebrow">' + esc(L.procEy) + '</span><h2>' + esc(L.procH) + '</h2></div><div class="steps rv">' + steps + '</div></div></section>' +
+
+      '<section class="sec rel"><div class="wrap"><div class="head rv"><span class="eyebrow">' + esc(L.relEy) + '</span><h2>' + esc(L.relH) + '</h2></div><div class="cards">' + rel + '</div></div></section>' +
+
+      '<section class="wrap"><div class="ctaband rv"><h2>' + esc(L.ctaH) + '</h2><a class="btn fill" href="' + wa + '" target="_blank" rel="noopener">' + esc(L.ctaBtn) + '</a></div></section></main>' +
+      '<footer><div class="wrap"><span>' + esc(L.rights) + '</span><span><a href="index.html">datum</a></span></div></footer>' +
+      '<a class="wa" href="' + gen + '" target="_blank" rel="noopener" aria-label="' + esc(L.waLabel) + '"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></a>';
+
+    document.getElementById('langBtn').addEventListener('click', function () {
+      lang = lang === 'en' ? 'ar' : 'en';
+      put('datum-lang', lang);
+      history.replaceState(null, '', 'system.html?id=' + id + '&lang=' + lang);
+      render();
+    });
+    document.getElementById('themeBtn').addEventListener('click', function () {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+      put('datum-theme', theme);
+    });
+    var els = document.querySelectorAll('.rv');
+    if (!('IntersectionObserver' in window)) { for (var i = 0; i < els.length; i++) els[i].classList.add('in'); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    for (var j = 0; j < els.length; j++) io.observe(els[j]);
+  }
+  render();
+})();
+</script>
+</body>
+</html>
