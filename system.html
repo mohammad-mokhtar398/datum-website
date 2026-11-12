@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Datum Technologies</title>
 <link rel="icon" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0F2249">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Datum Technologies">
+<meta property="og:title" content="Datum Technologies">
+<meta property="og:description" content="Systems we design, supply, install and support in Qatar.">
+<meta property="og:image" content="https://mohammad-mokhtar398.github.io/datum-website/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mohammad-mokhtar398.github.io/datum-website/assets/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
@@ -155,7 +167,7 @@ html[lang=ar] .dh h1{font-size:50px}
       steps: [['Design and configuration', 'Design and configuration to meet the connectivity you need.'], ['Testing network', 'Network infrastructure tested with advanced tools to qualify all cabling.'], ['Supply and installation', 'Supply and installation of the latest equipment and components.'], ['Support', 'After-sale support and an annual maintenance contract.']],
       ctaH: 'Ready to plan this system?', ctaBtn: 'Request a quote', ctaAll: 'See all systems',
       relEy: 'More systems', relH: 'You may also need', view: 'View details',
-      rights: 'Datum Technologies. All rights reserved.', theme: 'Switch between dark and light mode', waLabel: 'Chat on WhatsApp', waBtn: 'Ask on WhatsApp',
+      rights: 'Datum Technologies. All rights reserved.', theme: 'Switch between dark and light mode', waLabel: 'Chat on WhatsApp', waBtn: 'Ask on WhatsApp', shareBtn: 'Share', shareText: 'Take a look at this system from Datum Technologies:',
       wMsg: function (n) { return 'Hello Datum, I would like a quote for: ' + n; }
     },
     ar: {
@@ -166,7 +178,7 @@ html[lang=ar] .dh h1{font-size:50px}
       steps: [['التصميم والإعداد', 'تصميم وإعداد الشبكة بما يحقق الاتصال الذي تحتاجه.'], ['اختبار الشبكة', 'اختبار البنية التحتية للشبكة بأدوات متقدمة للتأكد من جودة كل الكابلات.'], ['التوريد والتركيب', 'توريد وتركيب أحدث المعدات والمكونات.'], ['الدعم', 'دعم بعد البيع وعقد صيانة سنوي.']],
       ctaH: 'جاهز لتخطيط هذا النظام؟', ctaBtn: 'اطلب عرض سعر', ctaAll: 'كل الأنظمة',
       relEy: 'أنظمة أخرى', relH: 'قد تحتاج أيضًا', view: 'عرض التفاصيل',
-      rights: 'داتوم تكنولوجيز. جميع الحقوق محفوظة.', theme: 'التبديل بين الوضع الداكن والفاتح', waLabel: 'تواصل عبر واتساب', waBtn: 'اسأل عبر واتساب',
+      rights: 'داتوم تكنولوجيز. جميع الحقوق محفوظة.', theme: 'التبديل بين الوضع الداكن والفاتح', waLabel: 'تواصل عبر واتساب', waBtn: 'اسأل عبر واتساب', shareBtn: 'مشاركة', shareText: 'اطّلع على هذا النظام من داتوم تكنولوجيز:',
       wMsg: function (n) { return 'مرحبًا داتوم، أرغب في الحصول على عرض سعر لـ: ' + n; }
     }
   };
@@ -212,7 +224,7 @@ html[lang=ar] .dh h1{font-size:50px}
       '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:40px;padding:24px 0 56px"><div class="txt"><span class="eyebrow">' + esc(L.systems) + '</span><h1>' + esc(d[0]) + '</h1>' +
       '<p class="lead">' + esc(d[3]) + '</p>' +
       (d[2] ? '<span class="chip"' + (lang === 'en' ? ' dir="ltr"' : '') + '>' + esc(L.brands) + ' · ' + esc(d[2]) + '</span>' : '') +
-      '<div class="row"><a class="btn fill" href="' + qh + '">' + esc(L.ctaBtn) + '</a><a class="btn" href="' + wa + '" target="_blank" rel="noopener">' + esc(L.waBtn) + '</a><a class="btn" href="index.html#systems">' + esc(L.ctaAll) + '</a></div></div>' +
+      '<div class="row"><a class="btn fill" href="' + qh + '">' + esc(L.ctaBtn) + '</a><a class="btn" href="' + wa + '" target="_blank" rel="noopener">' + esc(L.waBtn) + '</a><button type="button" class="btn" id="shareBtn">' + esc(L.shareBtn) + '</button><a class="btn" href="index.html#systems">' + esc(L.ctaAll) + '</a></div></div>' +
       (PHOTOS[id] ? '<div class="big photo" style="background:' + PHOTOS[id].bg + '"><img src="' + PHOTOS[id].src + '" alt="' + esc(d[0]) + '" style="object-fit:' + PHOTOS[id].fit + '"></div>' : '<div class="big">' + svg(id) + '</div>') + '</div></div></section>' +
 
       '<section class="sec"><div class="wrap"><div class="cols">' +
@@ -232,6 +244,12 @@ html[lang=ar] .dh h1{font-size:50px}
       put('datum-lang', lang);
       history.replaceState(null, '', 'system.html?id=' + id + '&lang=' + lang);
       render();
+    });
+    document.getElementById('shareBtn').addEventListener('click', function () {
+      var url = location.origin + location.pathname + '?id=' + id;
+      var text = L.shareText + ' ' + D[lang][id][0];
+      if (navigator.share) { navigator.share({ title: document.title, text: text, url: url }).catch(function () {}); return; }
+      window.open('https://wa.me/?text=' + encodeURIComponent(text + '\n' + url), '_blank', 'noopener');
     });
     document.getElementById('themeBtn').addEventListener('click', function () {
       theme = theme === 'dark' ? 'light' : 'dark';

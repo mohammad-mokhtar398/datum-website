@@ -6,6 +6,18 @@
 <title>Datum Technologies | IT, Networking and Smart Homes in Qatar</title>
 <meta name="description" content="Datum Technologies designs, supplies, installs and supports Wi-Fi, networks, CCTV, door stations, IP telephony, home automation and NAS in Qatar.">
 <link rel="icon" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0F2249">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Datum Technologies">
+<meta property="og:title" content="Datum Technologies | IT, Networking and Smart Homes in Qatar">
+<meta property="og:description" content="Wi-Fi, networks, CCTV, door stations, IP telephony, home automation and storage in Qatar. Designed, supplied, installed and supported.">
+<meta property="og:image" content="https://mohammad-mokhtar398.github.io/datum-website/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mohammad-mokhtar398.github.io/datum-website/assets/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
@@ -73,6 +85,9 @@
       aboutEy: 'About us', aboutH: 'Technology solutions for Qatar.',
       aboutP: 'Datum Technologies is a comprehensive technology solutions provider for businesses and residences in Qatar. From enterprise IT and modern networking infrastructure to seamless home automation, we deliver end-to-end work backed by global industry leaders.',
       about: [['Enterprise IT', 'Solutions built for the way your business runs.'], ['Networking', 'Modern infrastructure, designed, installed and tested.'], ['Home automation', 'Comfort, security and control working as one.']],
+      startEy: 'How to start', startH: 'Three steps to your quote.',
+      start: [['Choose', 'Pick a ready package, or the systems you need.'], ['Send', 'Add your name and number and send the request on WhatsApp.'], ['We reply', 'Our team gets back to you with your quote.']],
+      startBtn: 'Request a quote',
       servEy: 'How we work', servH: 'From the first drawing to the annual service.',
       servP: 'We support businesses and homes with the latest technology, and we stay after the install.',
       services: [
@@ -137,6 +152,9 @@
       aboutEy: 'من نحن', aboutH: 'حلول تقنية متكاملة في قطر.',
       aboutP: 'داتوم تكنولوجيز مزوّد حلول تقنية متكاملة للشركات والمنازل في قطر. من حلول تقنية المعلومات للمؤسسات والبنية التحتية الحديثة للشبكات إلى أتمتة المنازل، نقدّم عملًا متكاملًا من البداية للنهاية بدعم من كبرى العلامات العالمية.',
       about: [['تقنية المعلومات للمؤسسات', 'حلول مبنية على طريقة عمل شركتك.'], ['الشبكات', 'بنية تحتية حديثة، نصممها ونركّبها ونختبرها.'], ['أتمتة المنازل', 'راحة وأمان وتحكم في نظام واحد.']],
+      startEy: 'كيف تبدأ', startH: 'ثلاث خطوات حتى عرض السعر.',
+      start: [['اختر', 'اختر باقة جاهزة، أو الأنظمة التي تحتاجها.'], ['أرسل', 'اكتب اسمك ورقمك وأرسل الطلب عبر واتساب.'], ['نرد عليك', 'يتواصل معك فريقنا ومعه عرض السعر.']],
+      startBtn: 'اطلب عرض سعر',
       servEy: 'كيف نعمل', servH: 'من أول مخطط إلى الصيانة السنوية.',
       servP: 'ندعم الشركات والمنازل بأحدث التقنيات، ونبقى معك بعد التركيب.',
       services: [
@@ -257,6 +275,7 @@
       '<section class="facts"><div class="wrap">' + fct + '</div></section>' +
       '<section id="about" class="sec"><div class="wrap"><div class="head rv"><span class="eyebrow">' + esc(L.aboutEy) + '</span><h2>' + esc(L.aboutH) + '</h2><p>' + esc(L.aboutP) + '</p></div><div class="tiles rv">' + L.about.map(function (a) { return '<div class="tile"><b>' + esc(a[0]) + '</b><span>' + esc(a[1]) + '</span></div>'; }).join('') + '</div></div></section>' +
 
+      '<section id="start" class="sec alt"><div class="wrap"><div class="head rv"><span class="eyebrow">' + esc(L.startEy) + '</span><h2>' + esc(L.startH) + '</h2></div><div class="steps rv" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">' + L.start.map(function (s, i) { return '<div class="step"><span class="no">0' + (i + 1) + '</span><h3>' + esc(s[0]) + '</h3><p>' + esc(s[1]) + '</p></div>'; }).join('') + '</div><div class="rv" style="margin-top:28px"><a class="btn fill" href="quote.html">' + esc(L.startBtn) + '</a></div></div></section>' +
       '<section id="systems" class="sec"><div class="wrap"><div class="head rv"><span class="eyebrow">01</span><h2>' + esc(L.sysH) + '</h2><p>' + esc(L.sysP) + '</p></div><div class="cards">' + cards + '</div></div></section>' +
 
       '<section id="services" class="sec alt"><div class="wrap"><div class="head rv"><span class="eyebrow">' + esc(L.servEy) + '</span><h2>' + esc(L.servH) + '</h2><p>' + esc(L.servP) + '</p></div><div class="steps rv">' + steps + '</div></div></section>' +
