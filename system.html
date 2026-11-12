@@ -180,7 +180,7 @@ html[lang=ar] .dh h1{font-size:50px}
   if (IDS.indexOf(id) < 0) { location.replace('index.html#systems'); return; }
   var lang = q.get('lang') === 'ar' || q.get('lang') === 'en' ? q.get('lang') : (store('datum-lang') === 'ar' ? 'ar' : 'en');
   var theme = store('datum-theme');
-  if (theme !== 'light' && theme !== 'dark') theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  theme = 'dark';
   var app = document.getElementById('app');
 
   function render() {

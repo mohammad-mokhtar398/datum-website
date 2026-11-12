@@ -172,10 +172,7 @@
     }
   };
 
-  function readTheme() {
-    try { var s = localStorage.getItem('datum-theme'); if (s === 'light' || s === 'dark') return s; } catch (e) {}
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  }
+  function readTheme() { return 'dark'; }
   function readLang() {
     try { var s = localStorage.getItem('datum-lang'); if (s === 'ar' || s === 'en') return s; } catch (e) {}
     return 'en';
