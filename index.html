@@ -299,7 +299,7 @@
   function addAndGo(id) {
     if (state.sel.indexOf(id) < 0) state.sel.push(id);
     try { localStorage.setItem('datum-quote', JSON.stringify(state.sel)); } catch (e) {}
-    location.href = 'quote.html';
+    location.href = 'quote.html?add=' + encodeURIComponent(id);
   }
 
   function reveal() {

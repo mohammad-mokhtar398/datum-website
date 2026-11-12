@@ -121,11 +121,19 @@ footer{margin-top:0}
   function put(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
+  var NEEDS = {
+    home: ['nas', 'fw', 'wifi', 'network'],
+    wifi: ['network', 'fw'],
+    cctv: ['fw', 'nas', 'wifi', 'network']
+  };
+  function withNeeds(id) {
+    (NEEDS[id] || []).concat([id]).forEach(function (x) { if (sel.indexOf(x) < 0) sel.push(x); });
+  }
   var sel = [];
   try { var a = JSON.parse(get('datum-quote') || '[]'); if (Array.isArray(a)) sel = a.filter(function (x) { return IDS.indexOf(x) >= 0; }); } catch (e) {}
   var q = new URLSearchParams(location.search);
   var add = q.get('add');
-  if (add && IDS.indexOf(add) >= 0 && sel.indexOf(add) < 0) sel.push(add);
+  if (add && IDS.indexOf(add) >= 0) withNeeds(add);
   if (q.toString()) history.replaceState(null, '', 'quote.html');
   function save() { put('datum-quote', JSON.stringify(sel)); }
   save();
@@ -171,7 +179,7 @@ footer{margin-top:0}
 
   function toggle(id) {
     var i = sel.indexOf(id);
-    if (i >= 0) sel.splice(i, 1); else sel.push(id);
+    if (i >= 0) sel.splice(i, 1); else withNeeds(id);
     save();
     update();
   }
