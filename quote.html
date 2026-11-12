@@ -95,7 +95,31 @@ html[dir=rtl] .fld .inp input,html[dir=rtl] .fld .inp textarea{padding:14px 44px
 .trust li{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink2)}
 .trust svg{width:16px;height:16px;flex:none;stroke:var(--green);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .fine{display:none}
-@media (max-width:720px){.pick{grid-template-columns:1fr 1fr;gap:10px}.opt{padding:14px;min-height:0}.row2{grid-template-columns:1fr}.r .hd,.r .bd{padding-inline:20px}}
+@media (max-width:720px){.pkgs{grid-template-columns:1fr}.pick{grid-template-columns:1fr 1fr;gap:10px}.opt{padding:14px;min-height:0}.row2{grid-template-columns:1fr}.r .hd,.r .bd{padding-inline:20px}}
+
+.sub{margin:26px 0 12px;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.sub:first-of-type{margin-top:0}
+.sub small{display:block;margin-top:4px;font-size:13.5px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--ink2)}
+html[lang=ar] .sub{letter-spacing:0;text-transform:none;font-size:14px}
+.pkgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:6px}
+.pkg{position:relative;text-align:start;font:inherit;color:var(--ink);background:linear-gradient(160deg,var(--surface2),var(--bg2));border:1.5px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.pkg:hover{border-color:var(--green);transform:translateY(-2px)}
+.pkg .ic{width:38px;height:38px;border-radius:10px;background:linear-gradient(140deg,var(--green),#3E8F2A);display:grid;place-items:center}
+.pkg .ic svg{width:21px;height:21px;stroke:#08130A;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pkg b{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;line-height:1.25}
+html[lang=ar] .pkg b{font-family:'IBM Plex Sans Arabic',sans-serif}
+.pkg span.d{font-size:13px;color:var(--ink2);line-height:1.45}
+.pkg span.n{font:500 12px 'JetBrains Mono',monospace;color:var(--ink3)}
+html[lang=ar] .pkg span.n{font-family:inherit}
+.pkg[aria-pressed=true]{border-color:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 22%,transparent)}
+.pkg[aria-pressed=true]::after{content:"";position:absolute;top:14px;inset-inline-end:14px;width:22px;height:22px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%2308130A' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:14px;font-weight:500;color:var(--ink);background:var(--bg2);border:1.5px solid var(--line);border-radius:999px;padding:8px 16px;min-height:40px;cursor:pointer;transition:border-color .2s,background .2s}
+.chip:hover{border-color:var(--green)}
+.chip[aria-pressed=true]{border-color:var(--green);background:color-mix(in srgb,var(--green) 16%,var(--bg2))}
+.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px 24px;align-items:end}
+.about .fld.w{grid-column:1/-1}
+.fld .cl{font-weight:600;font-size:13.5px;margin-bottom:8px;display:block}
 footer{margin-top:0}
 @media (max-width:720px){.ttl h1{font-size:34px}html[lang=ar] .ttl h1{font-size:30px}.box{padding:20px}.lay>.r{position:static}.logo .mk{width:76px;height:76px}.logo .mk img{width:46px}.lay{padding-bottom:64px}}
 </style>
@@ -120,6 +144,21 @@ footer{margin-top:0}
   function svg(id) { return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + ICONS[id] + '"/></svg>'; }
   var CK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>';
 
+  var PK = {
+    villa: { sys: ['home', 'wifi', 'network', 'fw', 'cctv', 'door', 'nas'], place: 'villa', icon: 'M3 11l9-8 9 8 M5 10v10h14V10 M10 20v-6h4v6' },
+    apartment: { sys: ['home', 'wifi', 'network', 'fw', 'nas'], place: 'apartment', icon: 'M5 21V4h9v17 M14 9h5v12 M8 8h3 M8 12h3 M8 16h3' },
+    office: { sys: ['wifi', 'network', 'fw', 'phone', 'cctv', 'nas'], place: 'office', icon: 'M3 7h18v13H3z M9 7V4h6v3 M3 13h18' },
+    shop: { sys: ['wifi', 'network', 'fw', 'cctv', 'nas'], place: 'shop', icon: 'M4 9l1.5-5h13L20 9z M5 9v11h14V9 M10 20v-5h4v5' }
+  };
+  var PKORDER = ['villa', 'apartment', 'office', 'shop'];
+  var PKT = {
+    en: { villa: ['Smart villa', 'Full home automation, security cameras and a solid network.'], apartment: ['Smart apartment', 'Reliable Wi-Fi, network and home control.'], office: ['Small office', 'Network, IP phones, cameras and storage.'], shop: ['Shop', 'Wi-Fi, cameras and a secure network.'] },
+    ar: { villa: ['فيلا ذكية', 'أتمتة منزلية كاملة وكاميرات مراقبة وشبكة قوية.'], apartment: ['شقة ذكية', 'واي فاي موثوق وشبكة وتحكم منزلي.'], office: ['مكتب صغير', 'شبكة وهواتف IP وكاميرات وتخزين.'], shop: ['محل', 'واي فاي وكاميرات وشبكة آمنة.'] }
+  };
+  var PLACES = ['villa', 'apartment', 'office', 'shop', 'other'];
+  var PLN = { en: { villa: 'Villa', apartment: 'Apartment', office: 'Office', shop: 'Shop', other: 'Other' }, ar: { villa: 'فيلا', apartment: 'شقة', office: 'مكتب', shop: 'محل', other: 'أخرى' } };
+  var SIZES = ['s1', 's2', 's3', 's4'];
+  var SZN = { en: { s1: 'Under 100 m²', s2: '100 to 300 m²', s3: '300 to 600 m²', s4: 'Over 600 m²' }, ar: { s1: 'أقل من 100 م²', s2: '100 إلى 300 م²', s3: '300 إلى 600 م²', s4: 'أكثر من 600 م²' } };
   var N = {
     en: { wifi: ['Wi-Fi', 'UniFi'], network: ['Network', 'UniFi'], fw: ['Firewall', 'Netgate and UniFi'], cctv: ['CCTV', 'UniFi and Hikvision'], door: ['Door station', 'Hikvision and Grandstream'], phone: ['IP telephone', 'Grandstream'], home: ['Home automation', ''], nas: ['Storage', 'Synology'], car: ['Car tracking', ''] },
     ar: { wifi: ['الواي فاي', 'UniFi'], network: ['الشبكات', 'UniFi'], fw: ['الجدار الناري', 'Netgate وUniFi'], cctv: ['كاميرات المراقبة', 'UniFi وHikvision'], door: ['محطة الباب', 'Hikvision وGrandstream'], phone: ['الهاتف عبر IP', 'Grandstream'], home: ['أتمتة المنازل', ''], nas: ['التخزين', 'Synology'], car: ['تتبع السيارات', ''] }
@@ -134,6 +173,9 @@ footer{margin-top:0}
       sel: 'Selected', none: 'No systems selected yet.', rm: 'Remove',
       lblName: 'Name', lblPhone: 'Phone number', lblEmail: 'Email (optional)', lblNote: 'Project details (optional)',
       send: 'Send on WhatsApp', missing: 'To send, choose at least one system and enter your name and phone number.',
+      pkgH: 'Start with a package', pkgP: 'Pick a ready setup, then adjust the systems below.', pkgN: 'systems',
+      aboutH: 'About your place', aboutP: 'Optional. It helps us size your quote.', lblPlace: 'Type of place', lblSize: 'Approximate area', lblCount: 'Rooms or cameras (approx.)',
+      wPlace: 'Place', wSize: 'Area', wCount: 'Rooms or cameras',
       t1: 'Free quote, no obligation', t2: 'Our team replies on WhatsApp', t3: 'Your details are used only for this request',
       fine: 'WhatsApp opens with your request filled in. Press send there to deliver it to us.',
       rights: 'Datum Technologies. All rights reserved.', waLabel: 'Chat on WhatsApp',
@@ -148,6 +190,9 @@ footer{margin-top:0}
       sel: 'المختار', none: 'لم تختر أي نظام بعد.', rm: 'إزالة',
       lblName: 'الاسم', lblPhone: 'رقم الهاتف', lblEmail: 'البريد الإلكتروني (اختياري)', lblNote: 'تفاصيل المشروع (اختياري)',
       send: 'إرسال عبر واتساب', missing: 'للإرسال، اختر نظامًا واحدًا على الأقل واكتب اسمك ورقم هاتفك.',
+      pkgH: 'ابدأ بباقة جاهزة', pkgP: 'اختر تجهيزًا جاهزًا ثم عدّل الأنظمة بالأسفل.', pkgN: 'أنظمة',
+      aboutH: 'عن مكانك', aboutP: 'اختياري. يساعدنا على تقدير عرض السعر.', lblPlace: 'نوع المكان', lblSize: 'المساحة التقريبية', lblCount: 'عدد الغرف أو الكاميرات (تقريبًا)',
+      wPlace: 'المكان', wSize: 'المساحة', wCount: 'الغرف أو الكاميرات',
       t1: 'عرض سعر مجاني بدون التزام', t2: 'فريقنا يرد عليك على واتساب', t3: 'بياناتك تُستخدم لهذا الطلب فقط',
       fine: 'سيفتح واتساب وفيه طلبك مكتوبًا. اضغط إرسال هناك ليصلنا.',
       rights: 'داتوم تكنولوجيز. جميع الحقوق محفوظة.', waLabel: 'تواصل عبر واتساب',
@@ -179,7 +224,7 @@ footer{margin-top:0}
   var lang = q.get('lang') === 'ar' || q.get('lang') === 'en' ? q.get('lang') : (get('datum-lang') === 'ar' ? 'ar' : 'en');
   var theme = get('datum-theme');
   if (theme !== 'light' && theme !== 'dark') theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  var f = { name: '', phone: '', email: '', note: '' };
+  var f = { name: '', phone: '', email: '', note: '', place: '', size: '', count: '' };
   var app = document.getElementById('app');
 
   var WAI = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg>';
@@ -188,6 +233,12 @@ footer{margin-top:0}
     document.documentElement.lang = lang;
     document.documentElement.dir = L.dir;
     document.documentElement.setAttribute('data-theme', theme);
+    var pkgs = PKORDER.map(function (k) {
+      var t = PKT[lang][k];
+      return '<button type="button" class="pkg" data-pk="' + k + '" aria-pressed="false"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + PK[k].icon + '"/></svg></span><b>' + esc(t[0]) + '</b><span class="d">' + esc(t[1]) + '</span><span class="n">' + PK[k].sys.length + ' ' + esc(L.pkgN) + '</span></button>';
+    }).join('');
+    var placeChips = PLACES.map(function (k) { return '<button type="button" class="chip" data-k="place" data-v="' + k + '" aria-pressed="false">' + esc(PLN[lang][k]) + '</button>'; }).join('');
+    var sizeChips = SIZES.map(function (k) { return '<button type="button" class="chip" data-k="size" data-v="' + k + '" aria-pressed="false">' + esc(SZN[lang][k]) + '</button>'; }).join('');
     var opts = IDS.map(function (id) {
       var n = N[lang][id];
       return '<button type="button" class="opt" data-id="' + id + '" aria-pressed="false"><span class="ck">' + CK + '</span><span class="ic">' + svg(id) + '</span><b>' + esc(n[0]) + '</b>' + (n[1] ? '<small dir="ltr" style="text-align:start">' + esc(n[1]) + '</small>' : '') + '</button>';
@@ -200,7 +251,14 @@ footer{margin-top:0}
       '<a href="index.html" class="logo" dir="ltr" style="text-decoration:none;color:var(--ink)"><span class="mk"><img src="assets/logo.png" alt="Datum"></span><span class="nm">Datum<small>Technologies</small></span></a>' +
       '<div class="ttl"><h1><span class="grad">' + esc(L.h1) + '</span></h1><p>' + esc(L.lead) + '</p>' +
       '<div class="stp"><span><b>1</b>' + esc(L.s1) + '</span><span><b>2</b>' + esc(L.s2) + '</span><span><b>3</b>' + esc(L.s3) + '</span></div></div>' +
-      '<div class="lay"><div class="l"><div class="box"><h2><span class="sn">1</span>' + esc(L.pickH) + '</h2><p>' + esc(L.pickP) + '</p><div class="pick">' + opts + '</div></div></div>' +
+      '<div class="lay"><div class="l"><div class="box"><h2><span class="sn">1</span>' + esc(L.pickH) + '</h2><p>' + esc(L.pickP) + '</p>' +
+      '<div class="sub">' + esc(L.pkgH) + '<small>' + esc(L.pkgP) + '</small></div><div class="pkgs">' + pkgs + '</div>' +
+      '<div class="sub">' + esc(L.pickH) + '</div><div class="pick">' + opts + '</div>' +
+      '<div class="sub">' + esc(L.aboutH) + '<small>' + esc(L.aboutP) + '</small></div>' +
+      '<div class="about"><div class="fld w"><span class="cl">' + esc(L.lblPlace) + '</span><div class="chips">' + placeChips + '</div></div>' +
+      '<div class="fld w"><span class="cl">' + esc(L.lblSize) + '</span><div class="chips">' + sizeChips + '</div></div>' +
+      '<div class="fld"><label for="q-count">' + esc(L.lblCount) + '</label><div class="inp"><svg viewBox="0 0 24 24"><path d="M5 9h14M5 15h14M10 3L8 21M16 3l-2 18"/></svg><input id="q-count" type="text" inputmode="numeric" dir="ltr" maxlength="4" placeholder="0"></div></div></div>' +
+      '</div></div>' +
       '<div class="r"><div class="box"><div class="hd"><h2><span class="sn">2</span>' + esc(L.detH) + '</h2><p>' + esc(L.detP) + '</p></div><div class="bd">' +
       '<div class="sumh"><span>' + esc(L.sel) + '</span><span class="cnt z" id="cnt">0</span></div>' +
       '<div class="sel" id="sel" aria-live="polite"></div>' +
@@ -231,6 +289,13 @@ footer{margin-top:0}
     document.querySelectorAll('.opt').forEach(function (b) {
       b.setAttribute('aria-pressed', sel.indexOf(b.getAttribute('data-id')) >= 0 ? 'true' : 'false');
     });
+    document.querySelectorAll('.pkg').forEach(function (b) {
+      var s = PK[b.getAttribute('data-pk')].sys;
+      b.setAttribute('aria-pressed', s.length === sel.length && s.every(function (x) { return sel.indexOf(x) >= 0; }) ? 'true' : 'false');
+    });
+    document.querySelectorAll('.chip').forEach(function (b) {
+      b.setAttribute('aria-pressed', f[b.getAttribute('data-k')] === b.getAttribute('data-v') ? 'true' : 'false');
+    });
     var cnt = document.getElementById('cnt'); cnt.textContent = ordered.length; cnt.className = 'cnt' + (ordered.length ? '' : ' z');
     var box = document.getElementById('sel');
     box.innerHTML = ordered.length === 0 ? '<p class="none">' + esc(L.none) + '</p>' : ordered.map(function (id) {
@@ -243,6 +308,9 @@ footer{margin-top:0}
     if (can) {
       var lines = [L.wHello, '', L.wName + ': ' + f.name.trim(), L.wPhone + ': ' + f.phone.trim()];
       if (f.email.trim()) lines.push(L.wEmail + ': ' + f.email.trim());
+      if (f.place) lines.push(L.wPlace + ': ' + PLN[lang][f.place]);
+      if (f.size) lines.push(L.wSize + ': ' + SZN[lang][f.size]);
+      if (f.count.trim()) lines.push(L.wCount + ': ' + f.count.trim());
       lines.push(L.wSystems + ':');
       ordered.forEach(function (id) { lines.push('- ' + N[lang][id][0]); });
       if (f.note.trim()) lines.push(L.wDetails + ': ' + f.note.trim());
@@ -275,6 +343,25 @@ footer{margin-top:0}
     document.querySelectorAll('.opt').forEach(function (b) {
       b.addEventListener('click', function () { toggle(b.getAttribute('data-id')); });
     });
+    document.querySelectorAll('.pkg').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var k = b.getAttribute('data-pk');
+        sel = PK[k].sys.slice();
+        f.place = PK[k].place;
+        save();
+        update();
+      });
+    });
+    document.querySelectorAll('.chip').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var k = b.getAttribute('data-k'), v = b.getAttribute('data-v');
+        f[k] = f[k] === v ? '' : v;
+        update();
+      });
+    });
+    var cEl = document.getElementById('q-count');
+    cEl.value = f.count;
+    cEl.addEventListener('input', function () { cEl.value = cEl.value.replace(/[^0-9]/g, ''); f.count = cEl.value; update(); });
     document.getElementById('sel').addEventListener('click', function (e) {
       var t = e.target.closest && e.target.closest('[data-rm]');
       if (t) toggle(t.getAttribute('data-rm'));
