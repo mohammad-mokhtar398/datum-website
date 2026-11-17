@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohammad-mokhtar398.github.io/datum-website/sitemap.xml

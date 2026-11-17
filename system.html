@@ -8,6 +8,9 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0F2249">
+<meta name="description" content="Systems Datum Technologies designs, supplies, installs and supports in Qatar.">
+<link rel="canonical" href="https://mohammad-mokhtar398.github.io/datum-website/system.html">
+<meta property="og:url" content="https://mohammad-mokhtar398.github.io/datum-website/system.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Datum Technologies">
 <meta property="og:title" content="Datum Technologies">
@@ -50,6 +53,7 @@ html[lang=ar] .dh h1{font-size:50px}
 </head>
 <body>
 <div id="app"></div>
+<noscript><p style="font-family:sans-serif;padding:20px">Datum Technologies, Doha, Qatar. <a href="index.html#systems">See all systems</a> · <a href="quote.html">Request a quote</a></p></noscript>
 <script>
 (function () {
   var WA = '97431313064';
@@ -209,6 +213,18 @@ html[lang=ar] .dh h1{font-size:50px}
     document.documentElement.dir = L.dir;
     document.documentElement.setAttribute('data-theme', theme);
     document.title = d[0] + ' | Datum Technologies';
+    var pageUrl = 'https://mohammad-mokhtar398.github.io/datum-website/system.html?id=' + id;
+    var setMeta = function (sel, attr, val) { var m = document.querySelector(sel); if (m) m.setAttribute(attr, val); };
+    var seoDesc = d[1] + ' ' + (lang === 'ar' ? 'من داتوم تكنولوجيز في قطر.' : 'By Datum Technologies in Qatar.');
+    setMeta('meta[name=description]', 'content', seoDesc);
+    setMeta('link[rel=canonical]', 'href', pageUrl);
+    setMeta('meta[property="og:url"]', 'content', pageUrl);
+    setMeta('meta[property="og:title"]', 'content', document.title);
+    setMeta('meta[property="og:description"]', 'content', seoDesc);
+    var oldLd = document.getElementById('ld'); if (oldLd) oldLd.remove();
+    var ldEl = document.createElement('script'); ldEl.type = 'application/ld+json'; ldEl.id = 'ld';
+    ldEl.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'Service', name: d[0], description: d[3], serviceType: d[0], url: pageUrl, areaServed: { '@type': 'Country', name: 'Qatar' }, provider: { '@id': 'https://mohammad-mokhtar398.github.io/datum-website/#business', '@type': 'LocalBusiness', name: 'Datum Technologies', url: 'https://mohammad-mokhtar398.github.io/datum-website/' } });
+    document.head.appendChild(ldEl);
     var wa = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(L.wMsg(d[0]));
     var gen = 'https://wa.me/' + WA;
     var qh = 'quote.html?add=' + id + '&lang=' + lang;
