@@ -173,12 +173,14 @@ footer{margin-top:0}
   var PK = {
     villa: { sys: ['home', 'wifi', 'network', 'fw', 'cctv', 'door', 'nas'], place: 'villa', icon: 'M3 11l9-8 9 8 M5 10v10h14V10 M10 20v-6h4v6' },
     office: { sys: ['wifi', 'network', 'fw', 'phone', 'cctv', 'nas'], place: 'office', icon: 'M3 7h18v13H3z M9 7V4h6v3 M3 13h18' },
-    shop: { sys: ['wifi', 'network', 'fw', 'cctv', 'nas'], place: 'shop', icon: 'M4 9l1.5-5h13L20 9z M5 9v11h14V9 M10 20v-5h4v5' }
+    shop: { sys: ['wifi', 'network', 'fw', 'cctv', 'nas'], place: 'shop', icon: 'M4 9l1.5-5h13L20 9z M5 9v11h14V9 M10 20v-5h4v5' },
+    home: { sys: ['wifi', 'network', 'nas', 'cctv', 'fw', 'door'], place: 'home', icon: 'M3 11l9-8 9 8 M5 10v10h14V10' },
+    wifi: { sys: ['wifi', 'fw', 'network'], place: 'wifi', icon: 'M2 9a15 15 0 0 1 20 0 M5 12.5a10 10 0 0 1 14 0 M8.5 16a5 5 0 0 1 7 0 M12 19.5h.01' }
   };
-  var PKORDER = ['villa', 'office', 'shop'];
+  var PKORDER = ['villa', 'home', 'office', 'shop', 'wifi'];
   var PKT = {
-    en: { villa: ['Smart villa', 'Full home automation, security cameras and a solid network.'], office: ['Small office', 'Network, IP phones, cameras and storage.'], shop: ['Shop', 'Wi-Fi, cameras and a secure network.'] },
-    ar: { villa: ['فيلا ذكية', 'أتمتة منزلية كاملة وكاميرات مراقبة وشبكة قوية.'], office: ['مكتب صغير', 'شبكة وهواتف IP وكاميرات وتخزين.'], shop: ['محل', 'واي فاي وكاميرات وشبكة آمنة.'] }
+    en: { villa: ['Smart villa', 'Full home automation, security cameras and a solid network.'], office: ['Small office', 'Network, IP phones, cameras and storage.'], shop: ['Shop', 'Wi-Fi, cameras and a secure network.'], home: ['Normal home', 'Wi-Fi, network, storage, cameras, firewall and door stations.'], wifi: ['Wi-Fi setup', 'Wi-Fi with a firewall and a solid network.'] },
+    ar: { villa: ['فيلا ذكية', 'أتمتة منزلية كاملة وكاميرات مراقبة وشبكة قوية.'], office: ['مكتب صغير', 'شبكة وهواتف IP وكاميرات وتخزين.'], shop: ['محل', 'واي فاي وكاميرات وشبكة آمنة.'], home: ['منزل عادي', 'واي فاي وشبكة وتخزين وكاميرات وجدار حماية ومحطات أبواب.'], wifi: ['إعداد واي فاي', 'واي فاي مع جدار حماية وشبكة قوية.'] }
   };
   var N = {
     en: { wifi: ['Wi-Fi', 'UniFi'], network: ['Network', 'UniFi'], fw: ['Firewall', 'Netgate and UniFi'], cctv: ['CCTV', 'UniFi and Hikvision'], door: ['Door station', 'Hikvision and Grandstream'], phone: ['IP telephone', 'Grandstream'], home: ['Home automation', ''], nas: ['Storage', 'Synology and Seagate'], car: ['Car tracking', ''] },
